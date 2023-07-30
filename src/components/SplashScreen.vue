@@ -1,16 +1,24 @@
 <script setup>
-import {ref, onMounted} from 'vue'
-import gsap from "gsap"
-const leftLogo = ref(null);
-const rightLogo = ref(null);
-const displaySplashScreen = ref(true);
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
+const leftLogo = ref(null)
+const rightLogo = ref(null)
+const displaySplashScreen = ref(true)
 
 onMounted(() => {
-	gsap.to(leftLogo.value, {x: -300, opacity:0, delay: 1, duration: 2});
-	gsap.to(rightLogo.value, {x: 300, opacity:0, delay: 1, duration: 2, onComplete: () => {
-		displaySplashScreen.value = false
-	}});
+    const tl = gsap.timeline({ onComplete: hideSplashScreen, delay: 1 })
+    tl.add('start').to(leftLogo.value, { x: -300, opacity: 0, duration: 2 }, 'start').to(
+        rightLogo.value,
+        {
+            x: 300,
+            opacity: 0,
+            duration: 2
+        },
+        'start'
+    )
 })
+
+const hideSplashScreen = () => {displaySplashScreen.value = false}
 </script>
 
 <template>
