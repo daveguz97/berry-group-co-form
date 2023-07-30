@@ -18,7 +18,9 @@ onMounted(() => {
     )
 })
 
-const hideSplashScreen = () => {displaySplashScreen.value = false}
+const hideSplashScreen = () => {
+    displaySplashScreen.value = false
+}
 </script>
 
 <template>
