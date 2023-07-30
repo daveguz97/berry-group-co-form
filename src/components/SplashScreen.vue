@@ -31,6 +31,7 @@ const hideSplashScreen = () => {
 </template>
 
 <style scoped>
+@import url('../assets/base.css');
 .SplashScreen {
     height: 100vh;
     overflow: hidden;
@@ -38,6 +39,7 @@ const hideSplashScreen = () => {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99;
+    z-index: 2;
+	background: var(--page-background);
 }
 </style>
