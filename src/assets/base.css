@@ -1,17 +1,29 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
-:root {
-    --white-color: #eeeeee;
-	--dark-color: #080808;
-	--light-green-color: #A3CA9B;
-	--dark-green-color: #479537;
-	--periwinkle: #4D2D8D;
+@font-face {
+	font-family: heavyFont;
+	src: url('../assets/fonts/futura-lt-pro-3-cufonfonts/FuturaLTProHeavy.otf');
+}
+@font-face {
+	font-family: regularHeader;
+	src: url('../assets/fonts/futura-lt-pro-3-cufonfonts/FuturaLTProBook.otf');
 }
 
 :root {
-	--page-background: var(--white-color);
+    --white-color: #eeeeee;
+    --dark-color: #080808;
+    --light-green-color: #a3ca9b;
+    --dark-green-color: #479537;
+    --periwinkle: #4d2d8d;
+}
+
+:root {
+    --page-background: var(--white-color);
+    --text-color: var(--dark-color);
+    --border-color: var(--dark-color);
 	--text-color: var(--dark-color);
+	--main-header-color: var(--periwinkle);
+	--dark-header-color: var(--dark-green-color);
+	--checkbox-width-and-height: 15px;
 }
 
 *,
@@ -19,7 +31,7 @@
 *::after {
     box-sizing: border-box;
     margin: 0;
-	padding: 0;
+    padding: 0;
     font-weight: normal;
 }
 
@@ -31,9 +43,96 @@ body {
         color 0.5s,
         background-color 0.5s;
     line-height: 1.6;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+	text-transform: uppercase;
+}
+ul {
+	list-style-type: none;
+}
+
+h1,h2,h3 {
+	font-family: heavyFont, sans-serif;
+	color: var(--main-header-color);
+}
+
+h4,h5,h6 {
+	font-family: regularHeader, sans-serif;
+	color: var(--dark-header-color);
+}
+
+label {
+	color: var(--dark-green-color);
+	font-weight: 700;
+}
+
+.price {
+	color: var(--light-green-color);
+	font-weight: 600;
+}
+
+h1 { 
+	font-size: 3.3rem;
+}
+
+h2 {
+	font-size: 2.8rem;
+}
+
+h3 {font-size: 2.3rem;}
+
+h4 {font-size: 1.8rem;}
+
+h5 {font-size: 1.8rem;}
+
+h6 {
+	font-size: 1rem;
+}
+
+a {
+	text-decoration: none;
+}
+
+.error-message {
+	text-transform: none;
+	font-weight: 700;
+	color: #ff3333;
+	margin-top: .5rem;
+}
+.ingredients-button {
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.ingredients-button,
+ul li {
+    font-size: 12px;
+}
+
+
+@media screen and (min-width: 1024px) {
+	body {
+		font-size: 16px;
+	}
+	h1 { 
+		font-size: 4rem;
+	}
+	
+	h2 {
+		font-size: 3.5rem;
+	}
+	
+	h3 {font-size: 3rem;}
+	
+	h4 {font-size: 2.5rem;}
+	
+	h5 {font-size: 2rem;}
+	
+	h6 {
+		font-size: 1.5rem;
+	}
 }
