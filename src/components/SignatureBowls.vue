@@ -1,9 +1,26 @@
 <script setup>
+import {watchEffect} from 'vue'
 import { useSignatureBowlStore } from '../store/signatureBowls'
+import { storeToRefs } from 'pinia'
 import Form from './Form.vue'
 import FormButtons from './FormButtons.vue';
 
 const store = useSignatureBowlStore()
+const {showErrorMessage} = storeToRefs(store)
+
+const isBowlChecked = () => {
+	store.bowlState.some((bowl) => {
+		bowl.sizes.some((size) => {
+			if (size.checked) {
+				showErrorMessage.value = false
+			}
+		})
+	})
+}
+
+watchEffect(() => {
+	isBowlChecked()
+})
 </script>
 
 <template>
@@ -39,6 +56,7 @@ const store = useSignatureBowlStore()
             </div>
         </div>
 		<FormButtons />
+		<p class="error-message" v-if="store.showErrorMessage">Please select a bowl.</p>
     </Form>
 </template>
 

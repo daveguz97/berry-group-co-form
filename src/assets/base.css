@@ -101,6 +101,7 @@ a {
 	font-weight: 700;
 	color: #ff3333;
 	margin-top: .5rem;
+	text-align: center;
 }
 .ingredients-button {
     border: none;

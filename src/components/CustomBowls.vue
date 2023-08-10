@@ -1,7 +1,6 @@
 <script setup></script>
 
 <template>
-Custom Bowls
 </template>
 
 <style scoped>
