@@ -2,13 +2,10 @@
 import { useRouter } from 'vue-router'
 import { useSmoothieStore } from '../store/smoothie'
 import Form from './Form.vue'
+import FormButtons from './FormButtons.vue';
 
 const store = useSmoothieStore()
-const route = useRouter()
 
-const navigatePrevious = () => {
-    route.go(-1)
-}
 </script>
 
 <template>
@@ -38,10 +35,7 @@ const navigatePrevious = () => {
                             </li>
                         </ul>
                     </div>
-                    <button class="prev-button" @click.prevent="navigatePrevious">Previous</button>
-                    <button class="next-button" @click.prevent="store.handleDisplayCheckout()">
-                        Next
-                    </button>
+					<FormButtons/>
 					<p class="error-message" v-if="store.showErrorMessage">Please select a smoothie.</p>
                 </div>
             </Form>
@@ -58,29 +52,5 @@ const navigatePrevious = () => {
 
 .content {
     margin: 1rem 0;
-}
-.next-button,
-.prev-button {
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 0.5rem;
-    background-color: var(--light-green-color);
-    margin: 0 0.5rem;
-    width: 150px;
-    height: 30px;
-    transition: all 0.3s ease-in-out;
-}
-
-.next-button:hover,
-.prev-button:hover {
-    background-color: var(--dark-green-color);
-}
-
-input[type='checkbox'] {
-    background-color: red;
-    accent-color: var(--periwinkle);
-    width: var(--checkbox-width-and-height);
-    height: var(--checkbox-width-and-height);
 }
 </style>

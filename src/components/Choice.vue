@@ -61,7 +61,7 @@ const content = ref([
     cursor: pointer;
     min-width: 250px;
     min-height: 250px;
-    background: var(--light-green-color);
+    background: var(--lighter-green-color);
     margin: 1.5rem 0;
     display: flex;
     flex-direction: column;
@@ -69,31 +69,18 @@ const content = ref([
     justify-content: center;
     position: relative;
     border-radius: 5px;
-    -webkit-box-shadow: 1px 2px 15px -1px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 1px 2px 15px -1px rgba(0, 0, 0, 0.75);
-    box-shadow: 1px 1px 10px -1px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 2px 15px -1px var(--periwinkle);
+    -moz-box-shadow: 1px 2px 15px -1px var(--periwinkle);
+    box-shadow: 1px 1px 10px -1px var(--periwinkle);
+	transition: all .3s ease-in-out;
 }
 
-.choices .container .card::before {
-    content: '';
-    border-radius: 5px;
-    position: absolute;
-    left: 0;
-    bottom: 50%;
-    width: 100%;
-    height: 0;
-    z-index: 1;
-    transition: all 0.5s ease-in-out;
-}
-
-.choices .container .card:hover::before {
-    bottom: 0;
-    height: 100%;
-    background-color: var(--dark-green-color);
+.choices .container .card:hover {
+	background-color: var(--light-green-color);
 }
 
 .choices .container .card .content {
-    color: var(--periwinkle);
+    color: var(--dark-color);
     font-weight: 600;
     display: flex;
     flex-direction: column;

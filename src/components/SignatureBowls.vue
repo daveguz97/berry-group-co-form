@@ -1,14 +1,9 @@
 <script setup>
 import { useSignatureBowlStore } from '../store/signatureBowls'
-import { useStorage } from '@vueuse/core';
-import { storeToRefs } from 'pinia'
-import Form from './form.vue'
+import Form from './Form.vue'
+import FormButtons from './FormButtons.vue';
 
 const store = useSignatureBowlStore()
-
-const {signatureBowls} = storeToRefs(store)
-
-const bowlState = useStorage('save bowls', signatureBowls)
 </script>
 
 <template>
@@ -43,6 +38,7 @@ const bowlState = useStorage('save bowls', signatureBowls)
                 </div>
             </div>
         </div>
+		<FormButtons />
     </Form>
 </template>
 

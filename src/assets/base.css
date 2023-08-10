@@ -12,7 +12,7 @@
     --white-color: #eeeeee;
     --dark-color: #080808;
     --light-green-color: #a3ca9b;
-    --dark-green-color: #479537;
+    --lighter-green-color: #b6e7b0;
     --periwinkle: #4d2d8d;
 }
 
@@ -111,6 +111,13 @@ a {
 .ingredients-button,
 ul li {
     font-size: 12px;
+}
+
+input[type='checkbox'] {
+    background-color: red;
+    accent-color: var(--periwinkle);
+    width: var(--checkbox-width-and-height);
+    height: var(--checkbox-width-and-height);
 }
 
 

@@ -1,7 +1,7 @@
+
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { useSessionStorage } from "@vueuse/core";
-import router from "../router";
 
 let id= 0;
 
@@ -64,25 +64,11 @@ export const useSmoothieStore = defineStore('setSmoothies', () => {
 			checked: false
 		}])
 		let showErrorMessage = ref(false)
-		const selectedSmoothie = ref([])
+		let selectedSmoothie = ref([]);
 		const smoothieState = useSessionStorage('save smoothies', allSmoothies.value)
-
-		const handleDisplayCheckout = () => {
-			smoothieState.value.some(smoothie => {
-				if(smoothie.checked) {
-					selectedSmoothie.value.push(smoothie.name)
-					router.push('/checkout')
-					showErrorMessage.value = false
-				}
-				else {
-					showErrorMessage.value = true
-				}
-			})
-		}
-
 		const toggleCollapse = (smoothie) => {
 			smoothie.collapsed = !smoothie.collapsed
 		}
 
-		return {allSmoothies, showErrorMessage, selectedSmoothie, name, smoothieState, handleDisplayCheckout, toggleCollapse}
+		return {allSmoothies, showErrorMessage, selectedSmoothie, name, smoothieState,  toggleCollapse}
 })
