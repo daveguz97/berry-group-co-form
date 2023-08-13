@@ -17,6 +17,10 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
                 ),
             collapsed: true,
             sizes: ref([
+				{
+					size: '8 OZ',
+					checked
+				},
                 {
                     size: '12 OZ',
                     checked
@@ -41,6 +45,10 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
                 ),
             collapsed: true,
             sizes: ref([
+				{
+					size: '8 OZ',
+					checked
+				},
                 {
                     size: '12 OZ',
                     checked
@@ -65,6 +73,10 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
                 ),
             collapsed: true,
             sizes: ref([
+				{
+					size: '8 OZ',
+					checked
+				},
                 {
                     size: '12 OZ',
                     checked
@@ -89,6 +101,10 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
                 ),
             collapsed: true,
             sizes: ref([
+				{
+					size: '8 OZ',
+					checked
+				},
                 {
                     size: '12 OZ',
                     checked
@@ -113,6 +129,10 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
                 ),
             collapsed: true,
             sizes: ref([
+				{
+					size: '8 OZ',
+					checked
+				},
                 {
                     size: '12 OZ',
                     checked
@@ -125,8 +145,36 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
                     size: '24 OZ',
                     checked
                 }
-            ])
-        }
+            ]),
+        },
+		{
+			id: id++,
+			name: 'Vanilla Chia',
+			base: 'Vanilla Chia Pudding',
+			toppings:
+
+				'Original Granola, Mango, Rasberries, Chopped Coconuts, Chopped Almonds, Cacao Nibs, Option Honey or Agave'.split(
+					','
+				),
+			collapsed: true,
+			sizes: ref([
+				{
+					size: '8 OZ',
+				},
+				{
+					size: '12 OZ',
+					checked
+				},
+				{
+					size: '16 OZ',
+					checked
+				},
+				{
+					size: '24 OZ',
+					checked
+				}
+			])
+		}
     ]);
 
     let showErrorMessage = ref(false);

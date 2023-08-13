@@ -50,23 +50,32 @@ const handleSmoothieCheckout = () => {
 };
 
 const handleSignatureBowlCheckout = () => {
-	let signatureBowls = [];
+	// Create a empty array that will hold the signature bowl options
+	let signatureBowlOptions = [];
 
+	// Loop through the signature bowls
 	signatureBowlStore.signatureBowls.forEach((bowl) => {
+		// Loop through the sizes
 		bowl.sizes.forEach((size) => {
+			// If the size is checked
 			if (size.checked) {
-				signatureBowls.push(`${bowl.name} - ${size.size}`);
+				// append it to the signature bowl name and the size
+				signatureBowlOptions.push(`${bowl.name} - ${size.size}`);
 			}
 		});
 	});
 
-	if (signatureBowls.length > 0) {
-		selectedSignatureBowlState.value.push(...signatureBowls);
+	if(signatureBowlOptions.length > 0) {
+		// Push the signature bowl options to the selected signature bowl state
+		selectedSignatureBowlState.value.push(...signatureBowlOptions);
+		// Set the error message to false
 		showErrorMessageForBowl.value = false;
 	} else {
+		// Set the error message to true
 		showErrorMessageForBowl.value = true;
 	}
 
+	// Reset all the sizes to false
 	signatureBowlStore.signatureBowls.forEach((bowl) => {
 		bowl.sizes.forEach((size) => {
 			if (size.checked) {
@@ -74,7 +83,6 @@ const handleSignatureBowlCheckout = () => {
 			}
 		});
 	});
-	
 };
 
 const handleCustomBowlCheckout = () => {
