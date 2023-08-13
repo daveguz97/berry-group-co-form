@@ -1,82 +1,179 @@
 <script setup>
-import { watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useSmoothieStore } from '../store/smoothie';
 import { useSignatureBowlStore } from '../store/signatureBowls';
+import { useCustomBowls } from '../store/customBowls';
 import { useSessionStorage } from '@vueuse/core';
 
 const route = useRouter();
 const smoothieStore = useSmoothieStore();
 const signatureBowlStore = useSignatureBowlStore();
+const customBowlStore = useCustomBowls();
 
 let {
     showErrorMessage: showErrorMessageForSmoothie,
-    selectedSmoothie,
-    smoothieState
+    allSmoothies,
+    selectedSmoothieState
 } = storeToRefs(smoothieStore);
 
 let {
-    bowlState,
-    selectedSignatureBowl,
+    signatureBowls,
+    selectedSignatureBowlState,
     showErrorMessage: showErrorMessageForBowl
 } = storeToRefs(signatureBowlStore);
 
+let { customBowl, selectedCustomBowlBy12Oz, selectedCustomBowlBy16Oz, selectedCustomBowlBy24Oz } =
+    storeToRefs(customBowlStore);
+
 const handleSmoothieCheckout = () => {
-    let smoothieOptions = new Set();
+    let smoothieOptions = smoothieStore.allSmoothies.filter((smoothie) => {
+		return smoothie.checked;
+	});
 
-    smoothieState.value.some((smoothie) => {
-        if (smoothie.checked) {
-            smoothieOptions.add(smoothie.name);
-            route.push('/checkout');
-            showErrorMessageForSmoothie.value = false;
-        }
-        console.log(smoothieOptions, smoothieOptions);
+	const selectedSmoothie = smoothieOptions.map((smoothie) => {
+		return `${smoothie.name} - ${smoothie.checked}`;
+	});
 
-        if (smoothieOptions.size > 0) {
-            selectedSmoothie.value = [...smoothieOptions];
-            console.log(selectedSmoothie.value);
-        }
+    if (smoothieOptions.length > 0) {
+        selectedSmoothieState.value.push(...selectedSmoothie);
+        showErrorMessageForSmoothie.value = false;
+    } else {
+        showErrorMessageForSmoothie.value = true;
+    }
 
-        if (smoothieOptions.size <= 0) {
-            showErrorMessageForSmoothie.value = true;
-        }
-    });
+	smoothieOptions.forEach((smoothie) => {
+		if (smoothie.checked) {
+			smoothie.checked = false;
+		}
+	});
 };
 
 const handleSignatureBowlCheckout = () => {
-    let signatureBowlOptions = new Set();
+	let signatureBowls = [];
 
-    bowlState.value.some((bowl) => {
-        bowl.sizes.forEach((size) => {
-            if (size.checked) {
-                signatureBowlOptions.add(`${bowl.name} - ${size.size}`);
-                route.push('/checkout');
-                showErrorMessageForBowl.value = false;
-            }
-            console.log(signatureBowlOptions);
-        });
+	signatureBowlStore.signatureBowls.forEach((bowl) => {
+		bowl.sizes.forEach((size) => {
+			if (size.checked) {
+				signatureBowls.push(`${bowl.name} - ${size.size}`);
+			}
+		});
+	});
 
-        if (signatureBowlOptions.size > 0) {
-            selectedSignatureBowl.value = [...signatureBowlOptions];
-            console.log(selectedSignatureBowl.value);
-        }
-        if (signatureBowlOptions.size <= 0) {
-            showErrorMessageForBowl.value = true;
-        }
-    });
+	if (signatureBowls.length > 0) {
+		selectedSignatureBowlState.value.push(...signatureBowls);
+		showErrorMessageForBowl.value = false;
+	} else {
+		showErrorMessageForBowl.value = true;
+	}
+
+	signatureBowlStore.signatureBowls.forEach((bowl) => {
+		bowl.sizes.forEach((size) => {
+			if (size.checked) {
+				size.checked = false;
+			}
+		});
+	});
+	
+};
+
+const handleCustomBowlCheckout = () => {
+	let customBowlOptions = []
+
+	let sizeOptions = []
+
+	let toppingOptions = []
+
+	let fruitOptions = []
+
+	let baseOptions = []
+
+	customBowl.value.forEach((bowl) => {
+		if (customBowlStore.selectedSize === bowl.size) {
+			sizeOptions.push(bowl.size);
+			bowl.base.forEach((base) => {
+				if (base.checked) {
+					baseOptions.push(base.name);
+				}
+			});
+
+			bowl.fruits.forEach((fruit) => {
+				if (fruit.checked) {
+					fruitOptions.push(fruit.name);
+				}
+			});
+
+			bowl.toppings.forEach((topping) => {
+				if (topping.checked) {
+					toppingOptions.push(topping.name);
+				}
+			});	
+
+			customBowlOptions.push(
+				`Size: ${sizeOptions.join(', ')}\n`,
+				`Base: ${baseOptions.join(', ')}\n`,
+				`Fruits: ${fruitOptions.join(', ')}\n`,
+				`Toppings: ${toppingOptions.join(', ')}\n\n`
+			);
+		}
+	});
+
+	if (customBowlOptions.length > 0) {
+		if (customBowlStore.selectedSize === '12oz') {
+			selectedCustomBowlBy12Oz.value.push(...customBowlOptions);
+		}
+
+		if (customBowlStore.selectedSize === '16oz') {
+			selectedCustomBowlBy16Oz.value.push(...customBowlOptions);
+		}
+
+		if (customBowlStore.selectedSize === '24oz') {
+			selectedCustomBowlBy24Oz.value.push(...customBowlOptions);
+		}
+	}
+
+	customBowlStore.customBowl.forEach((bowl) => {
+		if (customBowlStore.selectedSize === bowl.size) {
+			bowl.base.forEach((base) => {
+				if (base.checked) {
+					base.checked = false;
+				}
+			});
+
+			bowl.fruits.forEach((fruit) => {
+				if (fruit.checked) {
+					fruit.checked = false;
+				}
+			});
+
+			bowl.toppings.forEach((topping) => {
+				if (topping.checked) {
+					topping.checked = false;
+				}
+			});	
+		}
+	});
+};
+
+const addToOrder = () => {
+    let { path } = route.currentRoute.value;
+    if (path === '/smoothies') {
+        return handleSmoothieCheckout();
+    }
+
+    if (path === '/signatureBowls') {
+        return handleSignatureBowlCheckout();
+    }
+
+    if (path === '/customBowls/0' || path === '/customBowls/1' || path === '/customBowls/2') {
+        return handleCustomBowlCheckout();
+    }
 };
 
 const handleDisplayCheckout = () => {
     let { path } = route.currentRoute.value;
 
-	if(path === '/smoothies') {
-		return handleSmoothieCheckout();
-	}
-
-	if(path === '/signatureBowls') {
-		return handleSignatureBowlCheckout();
-	}
+    route.push('/checkout');
 };
 
 const navigatePrevious = () => {
@@ -87,15 +184,14 @@ const navigatePrevious = () => {
 <template>
     <div class="form-buttons">
         <button class="prev-button" @click.prevent="navigatePrevious">Previous</button>
-        <button class="next-button" @click.prevent="handleDisplayCheckout">Next</button>
+        <button class="add-to-order" @click.prevent="addToOrder">Add to Order</button>
     </div>
 </template>
 
 <style scoped>
 @import '../assets/base.css';
 
-.next-button,
-.prev-button {
+button {
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -108,8 +204,7 @@ const navigatePrevious = () => {
     text-align: center;
 }
 
-.next-button:hover,
-.prev-button:hover {
+button:hover {
     background-color: var(--light-green-color);
 }
 

@@ -131,7 +131,9 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
 
     let showErrorMessage = ref(false);
     const selectedSignatureBowl = ref([]);
-    const bowlState = useSessionStorage('save bowls', signatureBowls.value);
+    const selectedSignatureBowlState = useSessionStorage('selectedBowlState', []);
+
+	const saveSelectedBowls = useSessionStorage('savedBowls', []);
 
     const toggleCollapse = (bowl) => {
         bowl.collapsed = !bowl.collapsed;
@@ -139,9 +141,10 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
 
     return {
         signatureBowls,
-        bowlState,
+        selectedSignatureBowlState,
         showErrorMessage,
         selectedSignatureBowl,
+		saveSelectedBowls,
         toggleCollapse
     };
 });

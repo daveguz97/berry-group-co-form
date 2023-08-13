@@ -59,16 +59,22 @@ export const useSmoothieStore = defineStore('setSmoothies', () => {
 			id: id++,
 			name: 'Merry Berry',
 			price: (10.0).toFixed(2),
-			ingredients: ['Strawberries', 'blueberries', 'banana', 'ground cinnamon', 'coconut mill'],
+			ingredients: ['Strawberries', 'blueberries', 'banana', 'ground cinnamon', 'coconut milk'],
 			collapsed: true,
 			checked: false
 		}])
 		let showErrorMessage = ref(false)
 		let selectedSmoothie = ref([]);
-		const smoothieState = useSessionStorage('save smoothies', allSmoothies.value)
+
+		const selectedSmoothieState = useSessionStorage('selectedSmoothie', []);
+
+		const savedSmoothie = useSessionStorage('savedSmoothie', []);
+
+
+
 		const toggleCollapse = (smoothie) => {
 			smoothie.collapsed = !smoothie.collapsed
 		}
 
-		return {allSmoothies, showErrorMessage, selectedSmoothie, name, smoothieState,  toggleCollapse}
+		return {allSmoothies, showErrorMessage, selectedSmoothie, selectedSmoothieState, toggleCollapse, savedSmoothie}
 })

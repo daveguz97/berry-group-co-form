@@ -25,8 +25,11 @@ const changeHeader = () => {
         case '/signatureBowls':
             headerTitle.value = `Signature Bowls`
             break
+		case '/customBowlSize':
+			headerTitle.value = 'Choose your Size'
+			break
         case '/customBowls':
-            headerTitle.value = 'Build your own bowl'
+            headerTitle.value = 'Build your bowl'
             break
         case '/checkout':
             headerTitle.value = 'Checkout'

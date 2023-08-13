@@ -1,17 +1,24 @@
 <script setup>
-import { watchEffect } from 'vue';
-import { useSessionStorage } from '@vueuse/core';
 import emailjs from 'emailjs-com';
 import { useSmoothieStore } from '../store/smoothie';
 import { useSignatureBowlStore } from '../store/signatureBowls';
+import { useCustomBowls } from '../store/customBowls';
 import { storeToRefs } from 'pinia';
 
 const smoothieStore = useSmoothieStore();
-const { selectedSmoothie, showErrorMessage, smoothieState, allSmoothies } =
-    storeToRefs(smoothieStore);
+const { selectedSmoothieState, allSmoothies } = storeToRefs(smoothieStore);
 
 const signatureBowlStore = useSignatureBowlStore();
-const { selectedSignatureBowl, bowlState } = storeToRefs(signatureBowlStore);
+const { selectedSignatureBowlState, signatureBowls } = storeToRefs(signatureBowlStore);
+
+let customBowlStore = useCustomBowls();
+
+const {
+	customBowl,
+	selectedCustomBowlBy12Oz,
+	selectedCustomBowlBy16Oz,
+	selectedCustomBowlBy24Oz
+} = storeToRefs(customBowlStore);
 
 const sendEmail = async () => {
     const serviceID = 'service_43kez0s';
@@ -22,19 +29,25 @@ const sendEmail = async () => {
     const templateParams = {
         from_name: 'David Guzman',
         to_name: 'Victoria',
-        smoothie: `Smoothie Name: ${selectedSmoothie.value.join(', ')}`,
-        customBowl: 'Custom Bowls: ',
-        signatureBowl: `Signature Bowls: \n\n
-			${selectedSignatureBowl.value.join(', ')}
+        smoothie: `Smoothie Name: ${selectedSmoothieState.value?.join(', ')}`,
+        customBowl: `Custom Bowls: \n
+			${selectedCustomBowlBy12Oz ? selectedCustomBowlBy12Oz.value?.join(' ') + '\n' : ''}
+			${selectedCustomBowlBy16Oz ? selectedCustomBowlBy16Oz.value?.join(' ')  + '\n': ''}
+			${selectedCustomBowlBy24Oz ? selectedCustomBowlBy24Oz.value?.join(' ')  + '\n': ''}`,
+        signatureBowl: `Signature Bowls: \n
+			${selectedSignatureBowlState.value?.join(', ')}
 		`
     };
 
     try {
-        console.log('Selected smoothie', selectedSmoothie);
         let response = await emailjs.send(serviceID, templateID, templateParams, userID);
         console.log('Email sent successfully!', response);
+        console.log('bowl state: ' + JSON.stringify(selectedSignatureBowlState.value));
+
+        console.log('smoothie state: ' + JSON.stringify(selectedSmoothieState.value));
         resetSmoothie();
         resetSignatureBowl();
+        resetCustomBowl();
         console.log('Store :' + JSON.stringify(smoothieStore.allSmoothies));
     } catch (error) {
         console.error('Failed to send email:', error);
@@ -42,19 +55,46 @@ const sendEmail = async () => {
 };
 
 const resetSmoothie = () => {
-    smoothieState.value.forEach((smoothie) => {
-        smoothie.collapsed = true;
+    allSmoothies.value.forEach((smoothie) => {
         smoothie.checked = false;
+        smoothie.collapsed = true;
     });
+    selectedSmoothieState.value = [];
+    console.log('selected smoothie state', selectedSmoothieState.value);
 };
 
 const resetSignatureBowl = () => {
-    bowlState.value.forEach((bowl) => {
+    signatureBowls.value.forEach((bowl) => {
         bowl.collapsed = true;
         bowl.sizes.forEach((size) => {
             size.checked = false;
         });
+
+		selectedSignatureBowlState.value = [];
     });
+
+	console.log('selectedSignatureBowlState', selectedSignatureBowlState.value);
+
+    selectedSignatureBowlState.value = [];
+};
+
+const resetCustomBowl = () => {
+    customBowl.value.forEach(bowl => {
+		bowl.base.forEach(base => {
+			base.checked = false;
+		})
+
+		bowl.toppings.forEach(topping => {
+			topping.checked = false;
+		})
+
+		bowl.fruits.forEach(fruit => {
+			fruit.checked = false;
+		})
+	})
+
+	selectedCustomBowlBy12Oz.value = [];
+	console.log('selectedCustomBowlBy12Oz', selectedCustomBowlBy12Oz.value);
 };
 </script>
 

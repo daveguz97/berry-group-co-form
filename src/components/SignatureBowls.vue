@@ -1,32 +1,15 @@
 <script setup>
-import {watchEffect} from 'vue'
 import { useSignatureBowlStore } from '../store/signatureBowls'
-import { storeToRefs } from 'pinia'
 import Form from './Form.vue'
 import FormButtons from './FormButtons.vue';
 
 const store = useSignatureBowlStore()
-const {showErrorMessage} = storeToRefs(store)
-
-const isBowlChecked = () => {
-	store.bowlState.some((bowl) => {
-		bowl.sizes.some((size) => {
-			if (size.checked) {
-				showErrorMessage.value = false
-			}
-		})
-	})
-}
-
-watchEffect(() => {
-	isBowlChecked()
-})
 </script>
 
 <template>
     <Form>
         <div class="container">
-            <div class="bowl-container" v-for="bowl in store.bowlState" :key="bowl.id">
+            <div class="bowl-container" v-for="bowl in store.signatureBowls" :key="bowl.id">
                 <label :for="bowl.name">&nbsp;{{ bowl.name }}</label>
 				<div>
                             <button

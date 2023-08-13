@@ -22,7 +22,7 @@
     --border-color: var(--dark-color);
 	--text-color: var(--dark-color);
 	--main-header-color: var(--periwinkle);
-	--dark-header-color: var(--dark-green-color);
+	--secondary-header-color: var(--periwinkle);
 	--checkbox-width-and-height: 15px;
 }
 
@@ -61,7 +61,7 @@ h1,h2,h3 {
 
 h4,h5,h6 {
 	font-family: regularHeader, sans-serif;
-	color: var(--dark-header-color);
+	color: var(--secondary-header-color);
 }
 
 label {
@@ -69,7 +69,7 @@ label {
 	font-weight: 700;
 }
 
-.price {
+.price, .gf, .nf {
 	color: var(--light-green-color);
 	font-weight: 600;
 }
@@ -86,7 +86,7 @@ h3 {font-size: 2.3rem;}
 
 h4 {font-size: 1.8rem;}
 
-h5 {font-size: 1.8rem;}
+h5 {font-size: 1.5rem;}
 
 h6 {
 	font-size: 1rem;
@@ -121,6 +121,64 @@ input[type='checkbox'] {
     height: var(--checkbox-width-and-height);
 }
 
+ .container .card {
+    cursor: pointer;
+    min-width: 250px;
+    min-height: 250px;
+    background: var(--lighter-green-color);
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 2px 15px -1px var(--periwinkle);
+    -moz-box-shadow: 1px 2px 15px -1px var(--periwinkle);
+    box-shadow: 1px 1px 10px -1px var(--periwinkle);
+	transition: all .3s ease-in-out;
+}
+
+ .container .card:hover {
+	background-color: var(--light-green-color);
+}
+
+ .container .card .content {
+    color: var(--dark-color);
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+ .container .card .content h6{
+    margin-top: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+	 .container {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-areas: 
+		"smoothies signature"
+		". custom";
+		gap: 1.5rem;
+		margin: 0 1rem;
+	}
+	 .container .card:first-child {
+		grid-area: smoothies;
+	}
+	 .container .card:nth-child(2) {
+		grid-area: signature;
+	}
+
+	 .container .card:last-child {
+		grid-area: custom;
+	}
+}
+
 
 @media screen and (min-width: 1024px) {
 	body {
@@ -142,5 +200,15 @@ input[type='checkbox'] {
 	
 	h6 {
 		font-size: 1.5rem;
+	}
+	.container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+
+	 .container .card {
+		margin: 2rem 1rem;
 	}
 }

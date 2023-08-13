@@ -1,9 +1,26 @@
-<script setup></script>
+<script setup>
+import Base from './Base.vue';
+import FormButtons from './FormButtons.vue';
+import Fruits from './Fruits.vue';
+import Toppings from './Toppings.vue';
+</script>
 
 <template>
+	<div class="container">
+		<Base></Base>
+		<Fruits></Fruits>
+		<Toppings></Toppings>
+		<FormButtons></FormButtons>
+	</div>
 </template>
 
 <style scoped>
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 .logo-div,
 .info {
     margin: 2rem 0;
@@ -42,8 +59,8 @@
     padding: 0 1rem;
 }
 .description {
-	position: relative;
-	width: 100%;
+    position: relative;
+    width: 100%;
 }
 .description h6 {
     letter-spacing: 3px;
@@ -51,5 +68,7 @@
     font-weight: 600;
 }
 
-.organic-info {color: var(--dark-green-color)}
+.organic-info {
+    color: var(--dark-green-color);
+}
 </style>

@@ -13,24 +13,24 @@ const store = useSmoothieStore()
         <div class="smoothies">
             <Form>
                 <div class="wrapper">
-                    <div v-for="state in store.smoothieState" :key="state.id" class="content">
-                        <input v-model="state.checked" type="checkbox" :name="state.name" />
-                        <label :for="state.name">&nbsp;{{ state.name }}</label>
-                        <sup class="price">&nbsp;${{ state.price }}</sup>
+                    <div v-for="smoothie in store.allSmoothies" :key="smoothie.id" class="content">
+                        <input v-model="smoothie.checked" type="checkbox" :name="smoothie.name" />
+                        <label :for="smoothie.name">&nbsp;{{ smoothie.name }}</label>
+                        <sup class="price">&nbsp;${{ smoothie.price }}</sup>
                         <div>
                             <button
                                 class="ingredients-button"
-                                @click.prevent="store.toggleCollapse(state)"
+                                @click.prevent="store.toggleCollapse(smoothie)"
                             >
                                 {{
-                                    state.collapsed
+                                    smoothie.collapsed
                                         ? '&rarr; show ingredients'
                                         : '&darr; Hide Ingredients'
                                 }}
                             </button>
                         </div>
-                        <ul v-if="!state.collapsed">
-                            <li v-for="ingredient in state.ingredients" :key="ingredient">
+                        <ul v-if="!smoothie.collapsed">
+                            <li v-for="ingredient in smoothie.ingredients" :key="ingredient">
                                 {{ ingredient }}
                             </li>
                         </ul>
