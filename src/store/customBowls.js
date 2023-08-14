@@ -1,334 +1,295 @@
 import { useSessionStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-
-let id = 0;
+import {v4 as id} from 'uuid';
 let checked = false;
 let gf = true;
 let nf = true;
 
 export const useCustomBowls = defineStore('setCustomBowls', () => {
     const size = [
+		{
+			id: id(),
+			name: '8 OZ',
+		},
         {
-            id: id++,
+            id: id(),
             name: '12 OZ'
         },
         {
-            id: id++,
+            id: id(),
             name: '16 OZ'
         },
         {
-            id: id++,
+            id: id(),
             name: '24 OZ'
         }
     ];
     const base = [
         {
+			id: id(),
             name: 'Acai',
-            checked
+            checked,
         },
         {
+			id: id(),
             name: 'Pitaya',
-            checked
+            checked,
         },
         {
+			id: id(),
             name: 'Blue Majik',
-            checked
+            checked,
         },
         {
+			id: id(),
             name: 'Mango',
-            checked
+            checked,
         },
         {
+			id: id(),
             name: 'Coconut Heaven',
-            checked
+            checked,
         },
         {
+			id: id(),
             name: 'Vanilla Chia Pudding',
-            checked
+            checked,
         },
         {
+			id: id(),
             name: 'Coconut Chia Pudding',
-            checked
+            checked,
         },
         {
+			id: id(),
             name: 'Matcha Chia Pudding',
-            checked
+            checked,
         }
     ];
 
     const fruits = [
         {
-            id: id++,
+            id: id(),
             name: 'Strawberries',
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Blueberries',
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Banana',
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Mango',
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Golden Kiwi',
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Raspberries',
             checked,
-            size
         }
     ];
 
     const toppings = [
         {
-            id: id++,
+            id: id(),
             name: 'Hemp Granola',
             gf,
             nf,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Original Granola',
             gf,
             nf,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Rasberry Granola',
             gf,
             nf,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Coconut Chia Pudding',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Vanilla Chia Pudding',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Matcha Chia Pudding',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Sliced Almonds',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Sunflower Seeds',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Coconut Flakes',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Toasted Coconuts',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Almond Butter',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Peanut Butter',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'goji Berries',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'HEMP Seeds',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Cacao Nibs',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Chia Seeds',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Chopped Almonds',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Sliced Coconuts',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Flax Meal Seeds',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Matcha Powder',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Cinnamon',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Honey',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Agave',
             gf: false,
             nf: false,
             checked,
-            size
         },
         {
-            id: id++,
+            id: id(),
             name: 'Date Syrup',
             gf: false,
             nf: false,
             checked,
-            size
         }
     ];
 
     let showErrorMessage = ref(false);
 
-	let customBowl = ref([
-		{
-			id: id++,
-			base: JSON.parse(JSON.stringify(base)),
-			fruits: ref(JSON.parse(JSON.stringify(fruits))),
-			toppings: ref(JSON.parse(JSON.stringify(toppings))),
-			size: size[0].name
-		},
-		{
-			id: id++,
-			base: ref(JSON.parse(JSON.stringify(base))),
-			fruits: ref(JSON.parse(JSON.stringify(fruits))),
-			toppings: ref(JSON.parse(JSON.stringify(toppings))),
-			size: size[1].name
-		},
-		{
-			id: id++,
-			base: ref(JSON.parse(JSON.stringify(base))),
-			fruits: ref(JSON.parse(JSON.stringify(fruits))),
-			toppings: ref(JSON.parse(JSON.stringify(toppings))),
-			size: size[2].name
-		}
-	]);
+let selectedCustomBowl = useSessionStorage('selectedCustomBowl', []);
 
-	let selectedCustomBowlBy12Oz = useSessionStorage('selectedCustomBowlBy12Oz', []);
-	let selectedCustomBowlBy16Oz = useSessionStorage('selectedCustomBowlBy16Oz', []);
-	let selectedCustomBowlBy24Oz = useSessionStorage('selectedCustomBowlBy24Oz', []);
-
-	const saveSelectedCustomBowlBy12Oz = useSessionStorage('savedCustomBowlBy12Oz', []);
-
-	const saveSelectedCustomBowlBy16Oz = useSessionStorage('savedCustomBowlBy16Oz', []);
-
-	const saveSelectedCustomBowlBy24Oz = useSessionStorage('savedCustomBowlBy24Oz', []);
+let selectedSizeState = useSessionStorage('selectedSize', []);
 	
 
 	let selectedSize = ref();
+
+	let customBowl = ref([
+		{
+			id: id(),
+			base: base,
+			fruits: fruits,
+			toppings: toppings,
+			size: selectedSize
+		}
+	]);
 
     return {
         base,
@@ -336,13 +297,9 @@ export const useCustomBowls = defineStore('setCustomBowls', () => {
         fruits,
         toppings,
         customBowl,
-		selectedCustomBowlBy12Oz,
-		selectedCustomBowlBy16Oz,
-		selectedCustomBowlBy24Oz,
+		selectedCustomBowl,
+		selectedSizeState,
 		selectedSize,
         showErrorMessage,
-		saveSelectedCustomBowlBy12Oz,
-		saveSelectedCustomBowlBy16Oz,
-		saveSelectedCustomBowlBy24Oz
     };
 });

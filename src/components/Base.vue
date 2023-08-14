@@ -1,33 +1,9 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useCustomBowls } from '../store/customBowls';
-import { useRouter } from 'vue-router';
 import Form from './Form.vue';
 
 const store = useCustomBowls();
-let customBowlBase = ref();
-let route = useRouter();
-
-onMounted(() => {
-    console.log(route, route.currentRoute.value.path);
-    setCustomBowlBase();
-});
-
-const setCustomBowlBase = () => {
-	const {path} = route.currentRoute.value;
-
-	if (path === '/customBowls/0') {
-    customBowlBase.value = store.customBowl[0].base;
-	}
-
-	if (path === '/customBowls/1') {
-	customBowlBase.value = store.customBowl[1].base;
-	}
-
-	if (path === '/customBowls/2') {
-	customBowlBase.value = store.customBowl[2].base;
-	}
-};
 </script>
 
 <template>
@@ -36,7 +12,7 @@ const setCustomBowlBase = () => {
             <h5>1. Choose your base</h5>
         </div>
         <div class="base-container">
-            <div class="form-group" v-for="base in customBowlBase" :key="base.name">
+            <div class="form-group" v-for="base in store.base" :key="base.name">
                 <input type="checkbox" :name="base.name" v-model="base.checked" />
                 <label :for="base.name">&nbsp;{{ base.name }}</label>
             </div>

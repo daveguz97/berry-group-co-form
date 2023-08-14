@@ -8,7 +8,7 @@ const signatureBowlStore = useSignatureBowlStore();
 const customBowlStore = useCustomBowls();
 
 const calculateState = () => {
-	let totalAmountOfItems = smoothieStore.selectedSmoothieState.length + signatureBowlStore.selectedSignatureBowlState.length + customBowlStore.selectedCustomBowlBy12Oz.length + customBowlStore.selectedCustomBowlBy16Oz.length + customBowlStore.selectedCustomBowlBy24Oz.length;
+	let totalAmountOfItems = smoothieStore.selectedSmoothieState.length + signatureBowlStore.selectedSignatureBowlState.length + customBowlStore.selectedCustomBowl.length;
 	return totalAmountOfItems; 
 }
 </script>

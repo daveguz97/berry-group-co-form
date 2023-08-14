@@ -1,14 +1,13 @@
 import { defineStore } from 'pinia';
 import { useSessionStorage } from '@vueuse/core';
 import { ref } from 'vue';
-
-let id = 0;
+import { v4 as id } from 'uuid';
 let checked = false;
 
 export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
     const signatureBowls = ref([
         {
-            id: id++,
+            id: id(),
             name: 'Berry Bar Bowl',
             base: 'Acai and coconut heaven',
             toppings:
@@ -36,7 +35,7 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
             ])
         },
         {
-            id: id++,
+            id: id(),
             name: 'Blueberrry yum yum',
             base: 'blue majik AND coconut heaven',
             toppings:
@@ -64,7 +63,7 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
             ])
         },
         {
-            id: id++,
+            id: id(),
             name: 'Coco dream',
             base: 'coconut heaven',
             toppings:
@@ -92,7 +91,7 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
             ])
         },
         {
-            id: id++,
+            id: id(),
             name: 'MANGO MAUI',
             base: 'Mango',
             toppings:
@@ -120,7 +119,7 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
             ])
         },
         {
-            id: id++,
+            id: id(),
             name: 'fresh N fruity',
             base: 'Acai and Pitaya',
             toppings:
@@ -148,7 +147,7 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
             ]),
         },
 		{
-			id: id++,
+			id: id(),
 			name: 'Vanilla Chia',
 			base: 'Vanilla Chia Pudding',
 			toppings:

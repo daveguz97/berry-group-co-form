@@ -2,13 +2,12 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { useSessionStorage } from "@vueuse/core";
-
-let id= 0;
+import { v4 as id } from "uuid";
 
 export const useSmoothieStore = defineStore('setSmoothies', () => {
 	const allSmoothies = ref([
 		{
-			id: id++,
+			id: id(),
 			name: 'Matcha Green',
 			price: (10.0).toFixed(2),
 			ingredients: ['Almond Milk', 'Baby Spinach', 'Blueberries', 'Match', 'Spirulina'],
@@ -16,7 +15,7 @@ export const useSmoothieStore = defineStore('setSmoothies', () => {
 			checked: false
 		},
 		{
-			id: id++,
+			id: id(),
 			name: 'Trippy mango',
 			price: (10.0).toFixed(2),
 			ingredients: ['Mango', 'Banana', 'Clementine', 'Pineapple', 'Coconut Milk', 'Flax Seed'],
@@ -24,7 +23,7 @@ export const useSmoothieStore = defineStore('setSmoothies', () => {
 			checked: false
 		},
 		{
-			id: id++,
+			id: id(),
 			name: 'Almond Date',
 			price: (11.0).toFixed(2),
 			ingredients: [
@@ -40,7 +39,7 @@ export const useSmoothieStore = defineStore('setSmoothies', () => {
 			checked: false
 		},
 		{
-			id: id++,
+			id: id(),
 			name: 'Glow Me',
 			price: (11.0).toFixed(2),
 			ingredients: ['banana', 'pear', 'romaine lettuce', 'kale', 'lemon juice', 'honey'],
@@ -48,7 +47,7 @@ export const useSmoothieStore = defineStore('setSmoothies', () => {
 			checked: false
 		},
 		{
-			id: id++,
+			id: id(),
 			name: 'Kale Lina',
 			price: (12.0).toFixed(2),
 			ingredients: ['Coconut Milk', 'kale', 'cucumber', 'banana', 'hemp seed', 'spirulina'],
@@ -56,7 +55,7 @@ export const useSmoothieStore = defineStore('setSmoothies', () => {
 			checked: false
 		},
 		{
-			id: id++,
+			id: id(),
 			name: 'Merry Berry',
 			price: (10.0).toFixed(2),
 			ingredients: ['Strawberries', 'blueberries', 'banana', 'ground cinnamon', 'coconut milk'],

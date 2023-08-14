@@ -5,6 +5,7 @@ import CustomBowlSize from '../components/CustomBowlSize.vue';
 import CustomBowls from '../components/CustomBowls.vue';
 import Choices from '../components/Choice.vue';
 import Checkout from '../components/checkout.vue';
+import path from 'path';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -31,15 +32,29 @@ const router = createRouter({
             component: CustomBowlSize
         },
         {
-            path: '/customBowls/:id',
+            path: '/customBowls',
             name: 'Custom Bowls',
-            component: CustomBowls
+			component: CustomBowls,
+			beforeEnter: (to, from, next) => {
+				if(from.params.size) {
+					next();
+				}
+				else {
+					next('/customBowlSize');
+				}
+			},
         },
         {
             path: '/checkout',
             name: 'Checkout',
             component: Checkout
-        }
+        },
+		// Catch
+		{
+			path: '/:pathMatch(.*)*',
+			name: 'NotFound',
+			component: Choices,
+		}
     ]
 });
 

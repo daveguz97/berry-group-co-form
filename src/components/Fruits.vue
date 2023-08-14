@@ -1,34 +1,8 @@
 <script setup>
-import { onMounted, ref } from 'vue';
 import { useCustomBowls } from '../store/customBowls';
-import { useRouter } from 'vue-router';
 import Form from './Form.vue';
 
 const store = useCustomBowls();
-
-let customBowlFruits = ref();
-let route = useRouter();
-
-onMounted(() => {
-    console.log(route, route.currentRoute.value.path);
-    setCustomBowlFruits();
-});
-
-const setCustomBowlFruits = () => {
-	const {path} = route.currentRoute.value;
-
-	if (path === '/customBowls/0') {
-    customBowlFruits.value = store.customBowl[0].fruits;
-	}
-
-	if (path === '/customBowls/1') {
-	customBowlFruits.value = store.customBowl[1].fruits;
-	}
-
-	if (path === '/customBowls/2') {
-	customBowlFruits.value = store.customBowl[2].fruits;
-	}
-};
 </script>
 
 <template>
@@ -37,7 +11,7 @@ const setCustomBowlFruits = () => {
                 <h5>2. Choose your Fruit</h5>
             </div>
             <div class="fruits-container">
-                <div class="form-group" v-for="fruit in customBowlFruits" :key="fruit.name">
+                <div class="form-group" v-for="fruit in store.fruits" :key="fruit.name">
                     <input type="checkbox" :name="fruit.name" v-model="fruit.checked" />
                     <label :for="fruit.name">&nbsp;{{ fruit.name }}</label>
                 </div>

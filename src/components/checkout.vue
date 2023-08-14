@@ -92,11 +92,7 @@ onMounted(() => {
             <!-- Create a form that gets the first name, last name, phone number, and email -->
             <div class="form-group">
                 <label for="firstName">First Name <sup>*</sup></label>
-                <input type="text" id="firstName" name="firstName" v-model="firstName" required />
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name <sup>*</sup></label>
-                <input type="text" id="lastName" name="lastName" v-model="lastName" required />
+                <input type="text" id="firstName" name="firstName" v-model="firstName" />
             </div>
             <div class="form-group">
                 <label for="phoneNumber">Phone Number</label>
@@ -104,7 +100,7 @@ onMounted(() => {
             </div>
             <div class="form-group">
                 <label for="email">Email <sup>*</sup></label>
-                <input type="email" id="email" name="email" v-model="email" required />
+                <input type="email" id="email" name="email" v-model="email" />
             </div>
             <div class="total-price">
                 <h4>Total Price:</h4>
