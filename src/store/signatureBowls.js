@@ -188,7 +188,7 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
         },
         {
             id: id(),
-            name: `Mama's Special`,
+            name: `Mom's Special`,
             base: 'Mango and Coconut Heaven',
             toppings:
                 'Rasberry Granola, Vanilla Chia Pudding, All Fruits, Goji berry, chopped almond, toasted coconut, almond butter'.split(
