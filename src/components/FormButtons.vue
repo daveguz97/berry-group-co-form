@@ -1,5 +1,5 @@
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter, } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useSmoothieStore } from '../store/smoothie';
 import { useSignatureBowlStore } from '../store/signatureBowls';
@@ -25,21 +25,20 @@ let {
 
 let {
     selectedCustomBowl,
-    selectedSize,
+    selectedSizeState,
     showErrorMessage: showErrorMessageForCustom
 } = storeToRefs(customBowlStore);
 
 const handleSmoothieCheckout = () => {
-	allSmoothies.value.forEach((smoothie) => {
+    allSmoothies.value.forEach((smoothie) => {
         if (smoothie.checked) {
             smoothie.id = uuidv4();
-
-			selectedSmoothieState.value.push({
-				id: smoothie.id,
-				name: smoothie.name,
-				price: smoothie.price,
-				size: smoothie.size
-			});
+            selectedSmoothieState.value.push({
+                id: smoothie.id,
+                name: smoothie.name,
+                price: smoothie.price,
+                size: smoothie.size
+            });
         }
     });
 
@@ -60,15 +59,15 @@ const handleSmoothieCheckout = () => {
 
 const handleSignatureBowlCheckout = () => {
     signatureBowlStore.signatureBowls.forEach((bowl) => {
-        bowl.id = uuidv4();
         bowl.sizes.forEach((size) => {
             if (size.checked) {
+                size.id = uuidv4();
                 selectedSignatureBowlState.value.push({
-					id: bowl.id,
-					name: bowl.name,
-					price: size.price,
-					size: size.size
-				});
+                    id: size.id,
+                    name: bowl.name,
+                    size: size.size,
+                    price: size.price
+                });
             }
         });
     });
@@ -96,7 +95,6 @@ const handleCustomBowlCheckout = () => {
     let fruitOptions = [];
     let toppingOptions = [];
     let baseOptions = [];
-
     // Loop through the fruits checked, toppings checked, and base checked and push them to the custom bowl options array along with the string, selectedSize.value
     customBowlStore.customBowl.forEach((bowl) => {
         bowl.id = uuidv4();
@@ -116,15 +114,21 @@ const handleCustomBowlCheckout = () => {
             }
         });
     });
+
+    let price = customBowlStore.size.filter((item) => item.name === selectedSizeState.value)[0]
+        .price;
+
     if (fruitOptions.length > 0 || toppingOptions.length > 0 || baseOptions.length > 0) {
         let customBowlOptions = {
             id: uuidv4(),
-            size: selectedSize.value,
+            size: selectedSizeState.value,
             fruits: fruitOptions,
             toppings: toppingOptions,
-            base: baseOptions
+            base: baseOptions,
+            price: price
         };
         selectedCustomBowl.value.push(customBowlOptions);
+        sessionStorage.setItem('selectedSize', null);
         showErrorMessageForCustom.value = false;
         route.push('/');
     } else {

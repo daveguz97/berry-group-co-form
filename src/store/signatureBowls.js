@@ -16,20 +16,22 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
                 ),
             collapsed: true,
             sizes: ref([
-				{
-					size: '8 OZ',
-					checked
-				},
                 {
+                    id: id(),
                     size: '12 OZ',
+                    price: (10.0).toFixed(2),
                     checked
                 },
                 {
+                    id: id(),
                     size: '16 OZ',
+                    price: (13.0).toFixed(2),
                     checked
                 },
                 {
+                    id: id(),
                     size: '24 OZ',
+                    price: (16.0).toFixed(2),
                     checked
                 }
             ])
@@ -44,20 +46,22 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
                 ),
             collapsed: true,
             sizes: ref([
-				{
-					size: '8 OZ',
-					checked
-				},
                 {
+                    id: id(),
                     size: '12 OZ',
+                    price: (10.0).toFixed(2),
                     checked
                 },
                 {
+                    id: id(),
                     size: '16 OZ',
+                    price: (13.0).toFixed(2),
                     checked
                 },
                 {
+                    id: id(),
                     size: '24 OZ',
+                    price: (16.0).toFixed(2),
                     checked
                 }
             ])
@@ -72,20 +76,22 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
                 ),
             collapsed: true,
             sizes: ref([
-				{
-					size: '8 OZ',
-					checked
-				},
                 {
+                    id: id(),
                     size: '12 OZ',
+                    price: (10.0).toFixed(2),
                     checked
                 },
                 {
+                    id: id(),
                     size: '16 OZ',
+                    price: (13.0).toFixed(2),
                     checked
                 },
                 {
+                    id: id(),
                     size: '24 OZ',
+                    price: (16.0).toFixed(2),
                     checked
                 }
             ])
@@ -100,20 +106,22 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
                 ),
             collapsed: true,
             sizes: ref([
-				{
-					size: '8 OZ',
-					checked
-				},
                 {
+                    id: id(),
                     size: '12 OZ',
+                    price: (10.0).toFixed(2),
                     checked
                 },
                 {
+                    id: id(),
                     size: '16 OZ',
+                    price: (13.0).toFixed(2),
                     checked
                 },
                 {
+                    id: id(),
                     size: '24 OZ',
+                    price: (16.0).toFixed(2),
                     checked
                 }
             ])
@@ -128,59 +136,93 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
                 ),
             collapsed: true,
             sizes: ref([
-				{
-					size: '8 OZ',
-					checked
-				},
                 {
+                    id: id(),
                     size: '12 OZ',
+                    price: (10.0).toFixed(2),
                     checked
                 },
                 {
+                    id: id(),
                     size: '16 OZ',
+                    price: (13.0).toFixed(2),
                     checked
                 },
                 {
+                    id: id(),
                     size: '24 OZ',
+                    price: (16.0).toFixed(2),
                     checked
                 }
-            ]),
+            ])
         },
-		{
-			id: id(),
-			name: 'Vanilla Chia',
-			base: 'Vanilla Chia Pudding',
-			toppings:
-
-				'Original Granola, Mango, Rasberries, Chopped Coconuts, Chopped Almonds, Cacao Nibs, Option Honey or Agave'.split(
-					','
-				),
-			collapsed: true,
-			sizes: ref([
-				{
-					size: '8 OZ',
-				},
-				{
-					size: '12 OZ',
-					checked
-				},
-				{
-					size: '16 OZ',
-					checked
-				},
-				{
-					size: '24 OZ',
-					checked
-				}
-			])
-		}
+        {
+            id: id(),
+            name: 'Vanilla Chia',
+            base: 'Vanilla Chia Pudding',
+            toppings:
+                'Original Granola, Mango, Rasberries, Chopped Coconuts, Chopped Almonds, Cacao Nibs, Option Honey or Agave'.split(
+                    ','
+                ),
+            collapsed: true,
+            sizes: ref([
+                {
+                    id: id(),
+                    size: '12 OZ',
+                    price: (10.0).toFixed(2),
+                    checked
+                },
+                {
+                    id: id(),
+                    size: '16 OZ',
+                    price: (13.0).toFixed(2),
+                    checked
+                },
+                {
+                    id: id(),
+                    size: '24 OZ',
+                    price: (16.0).toFixed(2),
+                    checked
+                }
+            ])
+        },
+        {
+            id: id(),
+            name: `Mama's Special`,
+            base: 'Mango and Coconut Heaven',
+            toppings:
+                'Rasberry Granola, Vanilla Chia Pudding, All Fruits, Goji berry, chopped almond, toasted coconut, almond butter'.split(
+                    ','
+                ),
+            collapsed: true,
+            sizes: ref([
+                {
+                    id: id(),
+                    size: '12 OZ',
+                    price: (10.0).toFixed(2),
+                    checked
+                },
+                {
+                    id: id(),
+                    size: '16 OZ',
+                    price: (13.0).toFixed(2),
+                    checked
+                },
+                {
+                    id: id(),
+                    size: '24 OZ',
+                    price: (16.0).toFixed(2),
+                    checked
+                }
+            ])
+        }
     ]);
 
     let showErrorMessage = ref(false);
     const selectedSignatureBowl = ref([]);
     const selectedSignatureBowlState = useSessionStorage('selectedBowlState', []);
 
-	const saveSelectedBowls = useSessionStorage('savedBowls', []);
+    const saveSelectedBowls = useSessionStorage('savedBowls', []);
 
     const toggleCollapse = (bowl) => {
         bowl.collapsed = !bowl.collapsed;
@@ -191,7 +233,7 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
         selectedSignatureBowlState,
         showErrorMessage,
         selectedSignatureBowl,
-		saveSelectedBowls,
+        saveSelectedBowls,
         toggleCollapse
     };
 });

@@ -9,28 +9,8 @@ const displaySplashScreen = ref(true)
 onMounted(() => {
   const tl = gsap.timeline({ onComplete: hideSplashScreen, delay: 1 })
   tl.add('start')
-    .to(leftLogo.value, {
-      rotation: 360, // Spin 360 degrees clockwise
-      duration: 2,
-      onUpdate: () => {
-        // Continuous rotation until animation completes
-        gsap.set(leftLogo.value, { rotation: '+=0.5' });
-      },
-    }, 'start')
-    .to(
-      rightLogo.value,
-      {
-        rotation: -360, // Spin 360 degrees counterclockwise
-        duration: 2,
-        onUpdate: () => {
-          // Continuous rotation until animation completes
-          gsap.set(rightLogo.value, { rotation: '-=0.5' });
-        },
-      },
-      'start'
-    )
-    .to(leftLogo.value, { x: -100, opacity: 0, duration: 0.5, ease: 'ease-out' })
-    .to(rightLogo.value, { x: 100, opacity: 0, duration: 0.5, ease: 'ease-out' }, '-=0.5')
+   .to(leftLogo.value, { duration: 1, x: '-100%', opacity: 0 }, 'start')
+   .to(rightLogo.value, { duration: 1, x: '100%', opacity: 0 }, 'start')
 })
 
 const hideSplashScreen = () => {

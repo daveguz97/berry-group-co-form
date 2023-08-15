@@ -5,7 +5,7 @@ import CustomBowlSize from '../components/CustomBowlSize.vue';
 import CustomBowls from '../components/CustomBowls.vue';
 import Choices from '../components/Choice.vue';
 import Checkout from '../components/checkout.vue';
-import path from 'path';
+import Success from '../components/Success.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -45,9 +45,14 @@ const router = createRouter({
 			},
         },
         {
+            path: '/success',
+            name: 'Success',
+            component: Success,
+        },
+        {
             path: '/checkout',
             name: 'Checkout',
-            component: Checkout
+            component: Checkout,
         },
 		// Catch
 		{

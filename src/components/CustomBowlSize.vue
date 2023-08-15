@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import { useRouter, useRoute } from 'vue-router';
 const store = useCustomBowls();
 
-const { selectedSize, selectedCustomBowl, selectedSizeState } = storeToRefs(store);
+const { selectedSize, selectedSizeState } = storeToRefs(store);
 
 const router = useRouter();
 const route = useRoute();

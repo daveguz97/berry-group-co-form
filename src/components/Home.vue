@@ -34,6 +34,9 @@ const changeHeader = () => {
         case '/checkout':
             headerTitle.value = 'Checkout'
             break
+        case '/success':
+			headerTitle.value = ''
+			break
         default:
             headerTitle.value = 'Pick your Options'
     }
