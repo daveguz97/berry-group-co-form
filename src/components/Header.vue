@@ -17,7 +17,7 @@ const calculateState = () => {
     <header>
         <div class="logo-div">
             <router-link to="/">
-                <img class="logo" src="../assets/berry-bar-co-logo.png" alt="Berry Bar Co. Logo" />
+                <img class="logo" src="../assets/berry-bar-co-logo.webp" alt="Berry Bar Co. Logo" />
             </router-link>
         </div>
         <router-link to="/checkout">
