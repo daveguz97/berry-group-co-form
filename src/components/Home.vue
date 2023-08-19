@@ -1,5 +1,6 @@
 <script setup>
-import { ref, computed, watchEffect } from 'vue'
+import { ref, computed, watchEffect, onMounted } from 'vue'
+import { gsap } from 'gsap';
 
 import { useRoute } from 'vue-router'
 
@@ -45,13 +46,18 @@ const changeHeader = () => {
 watchEffect(() => {
     changeHeader()
 })
+
+// Create a fade in effect for header
+onMounted(() => {
+	gsap.from('.header', { duration: 1, opacity: 0}).duration(1)
+})
 </script>
 
 <template>
     <Header
-        ><h3>{{ headerTitle }}</h3>
+        ><h4 class="header">{{ headerTitle }}</h4>
 		<div class="wrapper" v-if="$route.path === '/signatureBowls' || $route.path === '/customBowls'">
-			<h6 v-for="(value, key) in bowlPrices" :key="key">
+			<h6 class="header" v-for="(value, key) in bowlPrices" :key="key">
 				<span class="size">{{ key }}</span> <span class="bowlPrice">${{ value }}</span>
 			</h6>
 		</div>
@@ -60,7 +66,7 @@ watchEffect(() => {
 </template>
 
 <style scoped>
-h3 {
+h4 {
     text-align: center;
 }
 .wrapper {

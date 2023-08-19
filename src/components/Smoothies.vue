@@ -1,11 +1,15 @@
 <script setup>
-import { useRouter } from 'vue-router'
+import { onMounted } from 'vue';
+import { gsap } from 'gsap';
 import { useSmoothieStore } from '../store/smoothie'
 import Form from './Form.vue'
 import FormButtons from './FormButtons.vue';
 
 const store = useSmoothieStore()
 
+onMounted(() => {
+	gsap.from('.smoothies', { duration: 1, opacity: 0 }).duration(1);
+})
 </script>
 
 <template>

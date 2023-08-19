@@ -1,9 +1,15 @@
 <script setup>
+import { onMounted } from 'vue';
+import { gsap } from 'gsap';
 import { useSignatureBowlStore } from '../store/signatureBowls'
 import Form from './Form.vue'
 import FormButtons from './FormButtons.vue';
 
 const store = useSignatureBowlStore()
+
+onMounted(() => {
+	gsap.from('.bowl-container', { duration: 1, opacity: 0 }).duration(1);
+})
 </script>
 
 <template>

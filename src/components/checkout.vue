@@ -295,16 +295,17 @@ onMounted(() => {
                 <p class="error-message">{{ generateError(objectError) }}</p>
             </template>
             <div class="total-price">
-                <h4>Total Price:</h4>
+                <h4>Your Order</h4>
                 <div class="item-wrapper">
                     <template v-if="smoothies.length > 0">
                         <h6>Smoothies: ${{ smoothiePrice }}</h6>
                         <div>
-                            <ul>
-                                <li v-for="smoothie in smoothies" :key="smoothie.id">
+							<ul>
+								<li v-for="smoothie in smoothies" :key="smoothie.id">
                                     <img
                                         src="../assets/xmark-solid.svg"
                                         @click="removeItem(smoothie.id)"
+										alt="remove item"
                                     />
                                     {{ smoothie.name }}
                                 </li>
@@ -393,7 +394,7 @@ input {
     padding: 2px 5px;
 }
 label {
-    margin: 0 1rem;
+    margin: 0 .5rem;
 }
 
 button {
@@ -402,7 +403,7 @@ button {
     border-radius: 5px;
     padding: 0.5rem;
     background-color: var(--lighter-green-color);
-    margin: 0 0.5rem;
+    margin: 0.5rem;
     width: 150px;
     height: 30px;
     transition: all 0.3s ease-in-out;

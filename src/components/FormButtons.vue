@@ -1,10 +1,14 @@
 <script setup>
-import { useRouter, } from 'vue-router';
+import {ref} from 'vue';
+import { useRouter} from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useSmoothieStore } from '../store/smoothie';
 import { useSignatureBowlStore } from '../store/signatureBowls';
 import { useCustomBowls } from '../store/customBowls';
 import { v4 as uuidv4 } from 'uuid';
+import OrderAdded from './OrderAdded.vue';
+
+const showModal = ref(false);
 
 const route = useRouter();
 const smoothieStore = useSmoothieStore();
@@ -43,7 +47,6 @@ const handleSmoothieCheckout = () => {
     });
 
     if (allSmoothies.value.filter((smoothie) => smoothie.checked).length > 0) {
-        route.push('/');
         showErrorMessageForSmoothie.value = false;
     } else {
         showErrorMessageForSmoothie.value = true;
@@ -74,7 +77,6 @@ const handleSignatureBowlCheckout = () => {
 
     if (signatureBowls.value.filter((bowl) => bowl.sizes.some((size) => size.checked)).length > 0) {
         showErrorMessageForBowl.value = false;
-        route.push('/');
     } else {
         // Set the error message to true
         showErrorMessageForBowl.value = true;
@@ -130,7 +132,6 @@ const handleCustomBowlCheckout = () => {
         selectedCustomBowl.value.push(customBowlOptions);
         sessionStorage.setItem('selectedSize', null);
         showErrorMessageForCustom.value = false;
-        route.push('/');
     } else {
         showErrorMessageForCustom.value = true;
         return showErrorMessageForCustom;
@@ -157,22 +158,26 @@ const handleCustomBowlCheckout = () => {
 
 const addToOrder = () => {
     let { path } = route.currentRoute.value;
-
+	showModal.value = true;
     switch (path) {
-        case '/smoothies':
-            return handleSmoothieCheckout();
-        case '/signatureBowls':
-            return handleSignatureBowlCheckout();
-        case '/customBowls':
-            return handleCustomBowlCheckout();
-        default:
-            return;
-    }
-};
+		case '/smoothies':
+			handleSmoothieCheckout();
+			break;
+			case '/signatureBowls':
+            handleSignatureBowlCheckout();
+			break;
+			case '/customBowls':
+        	handleCustomBowlCheckout();
+			break;
+			default:
+				break;
+			}
+		};
 
 const navigatePrevious = () => {
     route.go(-1);
 };
+
 </script>
 
 <template>
@@ -180,6 +185,7 @@ const navigatePrevious = () => {
         <button class="prev-button" @click.prevent="navigatePrevious">Previous</button>
         <button class="add-to-order" @click.prevent="addToOrder">Add to Order</button>
     </div>
+	<OrderAdded v-if="showModal"></OrderAdded>
 </template>
 
 <style scoped>

@@ -1,4 +1,6 @@
 <script setup>
+import { onMounted } from 'vue';
+import { gsap } from 'gsap';
 import { useCustomBowls } from '../store/customBowls';
 import { storeToRefs } from 'pinia';
 import { useRouter, useRoute } from 'vue-router';
@@ -18,6 +20,10 @@ const routeToPath = (item) => {
 const handleClick = (item) => {
     routeToPath(item);
 };
+
+onMounted(() => {
+	gsap.from('.customBowlChoices', { duration: 1, opacity: 0 }).duration(1);
+});
 </script>
 <template>
     <div class="customBowlChoices">

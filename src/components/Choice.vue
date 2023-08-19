@@ -1,9 +1,9 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { gsap } from 'gsap';
 import Smoothies from './Smoothies.vue';
 import SignatureBowls from './SignatureBowls.vue';
 import CustomBowlSize from './CustomBowlSize.vue';
-
 const SmoothiesRoute = { template: Smoothies };
 const SigBowlsRoute = { template: SignatureBowls };
 const CustomBowlSizeRoute = { template: CustomBowlSize };
@@ -32,6 +32,10 @@ const content = ref([
         template: CustomBowlSizeRoute
     }
 ]);
+
+onMounted(() => {
+	gsap.from('.choices', { duration: 1, opacity: 0 }).duration(1);
+});
 </script>
 
 <template>
@@ -50,15 +54,20 @@ const content = ref([
 </template>
 
 <style scoped>
-.choices .container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-@media screen and (max-width: 768px) {
     .choices .container {
+		width: 100%;
         flex-direction: column;
+		align-items: center;
+		justify-content: center;
     }
-}
+
+	/* Laptop and Desktop */
+	@media screen and (min-width: 1024px) {
+		.choices .container {
+			flex-direction: row;
+			justify-content: space-around;
+			text-align: center;
+		}
+	}
+
 </style>

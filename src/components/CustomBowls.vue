@@ -1,8 +1,14 @@
 <script setup>
+import { onMounted } from 'vue';
+import { gsap } from 'gsap';
 import Base from './Base.vue';
 import FormButtons from './FormButtons.vue';
 import Fruits from './Fruits.vue';
 import Toppings from './Toppings.vue';
+
+onMounted(() => {
+	gsap.from('.container', { duration: 1, opacity: 0 }).duration(1);
+});
 </script>
 
 <template>

@@ -1,7 +1,9 @@
 <script setup>
+import { onMounted } from 'vue';
 import { useSmoothieStore } from '../store/smoothie';
 import { useSignatureBowlStore } from '../store/signatureBowls';
 import { useCustomBowls } from '../store/customBowls';
+import { gsap } from 'gsap';
 
 const smoothieStore = useSmoothieStore();
 const signatureBowlStore = useSignatureBowlStore();
@@ -11,6 +13,11 @@ const calculateState = () => {
 	let totalAmountOfItems = smoothieStore.selectedSmoothieState.length + signatureBowlStore.selectedSignatureBowlState.length + customBowlStore.selectedCustomBowl.length;
 	return totalAmountOfItems; 
 }
+
+// Fade in logo
+onMounted(() => {
+	gsap.from('header', { duration: 1, opacity: 0}).duration(1);
+})
 </script>
 
 <template>
@@ -33,17 +40,26 @@ const calculateState = () => {
 <style scoped>
 @import url('../assets/base.css');
 header {
+    max-width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 90%;
+	justify-content: flex-start;
     margin: 0 auto;
     justify-content: space-around;
     position: relative;
-    width: 100vw;
+	top: 0;
+}
+
+.title {
+	font-size: 1.2rem;
+}
+.logo-div {
+	width: 100%;
+	margin: .5rem 0;
 }
 .logo {
-    max-width: 200px;
+    max-width: 100px;
 }
 
 .store-container {

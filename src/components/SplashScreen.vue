@@ -23,7 +23,9 @@ const hideSplashScreen = () => {
         <img ref="leftLogo" src="../assets/left-berry.png" alt="left berry group logo" />
         <img ref="rightLogo" src="../assets/right-berry.png" alt="right berry group logo" />
     </div>
-    <Home v-else />
+	<template v-else>
+		<Home />
+	</template>
 </template>
 
 <style scoped>
@@ -38,4 +40,5 @@ const hideSplashScreen = () => {
     z-index: 2;
     background: var(--page-background);
 }
+
 </style>

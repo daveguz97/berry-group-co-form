@@ -123,10 +123,10 @@ input[type='checkbox'] {
 
  .container .card {
     cursor: pointer;
-    min-width: 250px;
-    min-height: 250px;
+	width: 70%;
+    height: 20vh;
+	margin: 1rem auto;
     background: var(--lighter-green-color);
-    margin: 1.5rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -155,28 +155,6 @@ input[type='checkbox'] {
 
  .container .card .content h6{
     margin-top: 0.5rem;
-}
-
-@media screen and (min-width: 768px) {
-	 .container {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-areas: 
-		"smoothies signature"
-		". custom";
-		gap: 1.5rem;
-		margin: 0 1rem;
-	}
-	 .container .card:first-child {
-		grid-area: smoothies;
-	}
-	 .container .card:nth-child(2) {
-		grid-area: signature;
-	}
-
-	 .container .card:last-child {
-		grid-area: custom;
-	}
 }
 
 
@@ -209,6 +187,9 @@ input[type='checkbox'] {
 	}
 
 	 .container .card {
+		flex-direction: row;
+		height: 30vh;
+		width: 33vh;
 		margin: 2rem 1rem;
 	}
 }

@@ -39,6 +39,7 @@ const nonFat = (nf) => {
     grid-template-columns: repeat(2, 1fr);
 	grid-gap: 1rem;
 	justify-items: center;
+	margin-bottom: 1.5rem;
 }
 
 .form-group {

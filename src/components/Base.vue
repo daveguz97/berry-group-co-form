@@ -31,6 +31,7 @@ const store = useCustomBowls();
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
     justify-items: center;
+	margin: 1.5rem 0;
 }
 
 .form-group {
