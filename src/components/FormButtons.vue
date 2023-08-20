@@ -185,7 +185,7 @@ const addToOrder = async () => {
 		await Promise.resolve(
 			setTimeout(() => {
 				showModal.value = true;
-			}, 500)
+			}, 800)
 		);
     } catch (error) {
         console.error(error);
