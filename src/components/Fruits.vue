@@ -28,11 +28,10 @@ const store = useCustomBowls();
     grid-template-columns: repeat(2, 1fr);
 	grid-gap: 1rem;
 	justify-items: center;
-	margin-bottom: 1.5rem;
+	margin-bottom: 1rem;
 }
 
 .form-group {
-    margin: 1rem 0;
     display: flex;
     flex-direction: row;
     align-items: center;
