@@ -13,15 +13,15 @@ const route = useRoute()
 const path = computed(() => route.path)
 
 let bowlPrices = {
-    '12 OZ': (10.0).toFixed(2),
-    '16 OZ': (13.0).toFixed(2),
-    '24 OZ': (16.0).toFixed(2)
+    '12 Oz': (10.0).toFixed(2),
+    '16 Oz': (13.0).toFixed(2),
+    '24 Oz': (16.0).toFixed(2)
 }
 
 const changeHeader = () => {
     switch (path.value) {
         case '/smoothies':
-            headerTitle.value = `Smoothies - 16 oz`
+            headerTitle.value = `Smoothies - 16 Oz`
             break
         case '/signatureBowls':
             headerTitle.value = `Signature Bowls`

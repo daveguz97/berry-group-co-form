@@ -37,7 +37,7 @@ onMounted(() => {
                 <div class="size-container">
                     <template v-for="size in bowl.sizes" :key="size">
                             <input v-model="size.checked" name="price" type="checkbox" />
-                            <label for="price">
+                            <label class="size" for="price">
                                 {{ size.size }}
                             </label>
                     </template>
