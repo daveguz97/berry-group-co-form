@@ -124,7 +124,7 @@ input[type='checkbox'] {
  .container .card {
     cursor: pointer;
 	width: 70%;
-    height: 20vh;
+    height: 15vh;
 	margin: 1rem auto;
     background: var(--lighter-green-color);
     display: flex;

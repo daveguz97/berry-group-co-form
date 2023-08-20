@@ -35,28 +35,28 @@ const getAllData = () => {
 
 const filterSmoothies = () => {
     return (
-		smoothieStore.selectedSmoothieState.map((smoothie) => {
-			return `<strong>Name: </strong>${smoothie.name}<br></br>`;
-		}) || { name: 'No Smoothies'
-		}
-	);
+        smoothieStore.selectedSmoothieState.map((smoothie) => {
+            return `<strong>Name: </strong>${smoothie.name}<br></br>`;
+        }) || { name: 'No Smoothies' }
+    );
 };
 
 const filterSignatureBowls = () => {
     return (
-		signatureBowlStore.selectedSignatureBowlState.map((bowl) => {
-			return `<strong>Name: </strong>${bowl.name} - <strong>Size: </strong>${bowl.size} - <strong>Price: </strong><br></br>`;
-		}) || { name: 'No Signature Bowls'
-		}
-	);
+        signatureBowlStore.selectedSignatureBowlState.map((bowl) => {
+            return `<strong>Name: </strong>${bowl.name} - <strong>Size: </strong>${bowl.size} - <strong>Price: </strong><br></br>`;
+        }) || { name: 'No Signature Bowls' }
+    );
 };
 
 const filterCustomBowl = () => {
-    return (
-        customBowlStore.selectedCustomBowl.map(bowl => {
-			return `<strong>Size: </strong>${bowl.size} - <strong>Base: </strong> ${bowl.base.join(', ')} - <strong>Fruits: </strong>${bowl.fruits.join(', ')} - <strong>Toppings: </strong>${bowl.toppings.join(', ')}<br></br>`;
-		})
-    );
+    return customBowlStore.selectedCustomBowl.map((bowl) => {
+        return `<strong>Size: </strong>${bowl.size} - <strong>Base: </strong> ${bowl.base.join(
+            ', '
+        )} - <strong>Fruits: </strong>${bowl.fruits.join(
+            ', '
+        )} - <strong>Toppings: </strong>${bowl.toppings.join(', ')}<br></br>`;
+    });
 };
 
 const sendEmail = async () => {
@@ -72,7 +72,7 @@ const sendEmail = async () => {
         email: email.value,
         smoothie: filterSmoothies(),
         signatureBowl: filterSignatureBowls(),
-        customBowl: filterCustomBowl(),
+        customBowl: filterCustomBowl()
     };
 
     try {
@@ -159,8 +159,8 @@ const getCustomBowlData = () => {
             id: item.id,
             base: item.base,
             size: item.size,
-			fruits: item.fruits,
-			toppings: item.toppings,
+            fruits: item.fruits,
+            toppings: item.toppings,
             price: item.price
         });
     });
@@ -248,7 +248,6 @@ const generateError = (item) => {
         console.log(objectError.value);
         return `Please choose an item.`;
     }
-
 };
 
 const backToHome = () => {
@@ -270,14 +269,20 @@ onMounted(() => {
             <!-- Create a form that gets the first name, last name, phone number, and email -->
             <div class="form-group">
                 <label for="firstName">Name<sup>*</sup></label>
-                <input type="text" id="firstName" name="firstName"  :class="formError || objectError ? 'error-input' : 'form-input'" 
-				v-model="firstName" required />
+                <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    :class="formError || objectError ? 'error-input' : 'form-input'"
+                    v-model="firstName"
+                    required
+                />
             </div>
             <div class="form-group">
                 <label for="phoneNumber">Phone Number<sup>*</sup></label>
                 <input
                     type="tel"
-					:class="formError || objectError ? 'error-input' : 'form-input'"
+                    :class="formError || objectError ? 'error-input' : 'form-input'"
                     id="phoneNumber"
                     name="phoneNumber"
                     v-model="phoneNumber"
@@ -286,7 +291,14 @@ onMounted(() => {
             </div>
             <div class="form-group">
                 <label for="email">Email <sup>*</sup></label>
-                <input :class="formError || objectError ? 'error-input' : 'form-input'" type="email" id="email" name="email" v-model="email" required />
+                <input
+                    :class="formError || objectError ? 'error-input' : 'form-input'"
+                    type="email"
+                    id="email"
+                    name="email"
+                    v-model="email"
+                    required
+                />
             </div>
             <template v-if="formError">
                 <p class="error-message" v-if="formError">{{ generateError(formError) }}</p>
@@ -300,12 +312,12 @@ onMounted(() => {
                     <template v-if="smoothies.length > 0">
                         <h6>Smoothies: ${{ smoothiePrice }}</h6>
                         <div>
-							<ul>
-								<li v-for="smoothie in smoothies" :key="smoothie.id">
+                            <ul>
+                                <li v-for="smoothie in smoothies" :key="smoothie.id">
                                     <img
                                         src="../assets/xmark-solid.svg"
                                         @click="removeItem(smoothie.id)"
-										alt="remove item"
+                                        alt="remove item"
                                     />
                                     {{ smoothie.name }}
                                 </li>
@@ -329,13 +341,23 @@ onMounted(() => {
                         <h6>Custom Bowls: ${{ customBowlPrice }}</h6>
                         <div class="custom-bowl-wrapper">
                             <ul>
-                                <li v-for="bowl in customBowls" :key="bowl.id">
-                                    <img
-                                        src="../assets/xmark-solid.svg"
-                                        @click="removeItem(bowl.id)"
-                                    /><span class="bold-text">Size:</span> {{ bowl.size }}<span class="bold-text">Base:</span> {{ bowl.base.join(', ') }} <span class="bold-text">Fruits:</span>
-									{{ bowl.fruits.join(', ') }}<span class="bold-text">Toppings:</span> {{ bowl.toppings.join(', ') }}
-                                </li>
+                                <template v-for="bowl in customBowls" :key="bowl.id">
+                                    <div class="custom-bowl-wrapper">
+                                        <img
+                                            src="../assets/xmark-solid.svg"
+                                            @click="removeItem(bowl.id)"
+                                        />
+                                        <li>
+                                            <span class="bold-text">Size:</span> {{ bowl.size
+                                            }}<span class="bold-text">Base:</span>
+                                            {{ bowl.base.join(', ') }}
+                                            <span class="bold-text">Fruits:</span>
+                                            {{ bowl.fruits.join(', ')
+                                            }}<span class="bold-text">Toppings:</span>
+                                            {{ bowl.toppings.join(', ') }}
+                                        </li>
+                                    </div>
+                                </template>
                             </ul>
                         </div>
                     </template>
@@ -351,7 +373,7 @@ onMounted(() => {
                     Submit
                 </button>
                 <button class="submit-button" type="button" @click="backToHome">
-                    Create another Orders
+                    Create another Order
                 </button>
             </div>
         </div>
@@ -382,11 +404,11 @@ ul li {
     margin: 1rem 0;
 }
 .form-input {
-	border: 1px solid var(--lighter-green-color);
+    border: 1px solid var(--lighter-green-color);
 }
 
 .error-input {
-	border: 1px solid red;
+    border: 1px solid red;
 }
 input {
     border-radius: 5px;
@@ -394,7 +416,7 @@ input {
     padding: 2px 5px;
 }
 label {
-    margin: 0 .5rem;
+    margin: 0 0.5rem;
 }
 
 button {
@@ -423,27 +445,34 @@ button:hover {
 }
 
 .item-wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
 }
 .bold-text {
-	font-weight: bold;
-	margin: 0 .5rem;
+    font-weight: bold;
+    margin: 0 0.5rem;
 }
 
 .custom-bowl-wrapper ul li {
-	margin: 1rem 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-bowl-wrapper {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-
+	margin: 0 5px;
 }
 
 h6 {
-	margin: .3rem 0;
+    margin: 0.3rem 0;
 }
 </style>

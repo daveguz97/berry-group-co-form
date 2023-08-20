@@ -56,7 +56,9 @@ onMounted(() => {
 <style scoped>
     .choices .container {
 		width: 100%;
-        flex-direction: column;
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		grid-gap: 1rem;
 		align-items: center;
 		justify-content: center;
     }
@@ -64,6 +66,7 @@ onMounted(() => {
 	/* Laptop and Desktop */
 	@media screen and (min-width: 1024px) {
 		.choices .container {
+			display: flex;
 			flex-direction: row;
 			justify-content: space-around;
 			text-align: center;

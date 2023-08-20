@@ -17,12 +17,12 @@ const checkout = () => {
         <!-- Modal -->
         <div class="modal">
             <div class="modal-content">
-                <h2>Order Added!</h2>
+                <h4>Thank You!</h4>
                 <p>Your order has been added</p>
 
 				<div class="button-group">
 					<button @click="backToHome">
-						Order More Items
+						Home
 					</button>
 					<button @click="checkout">
 						Checkout
@@ -45,7 +45,8 @@ const checkout = () => {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 2;
+	text-transform: none;
 }
 
 .modal-content {

@@ -1,6 +1,6 @@
 <script setup>
-import {ref} from 'vue';
-import { useRouter} from 'vue-router';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useSmoothieStore } from '../store/smoothie';
 import { useSignatureBowlStore } from '../store/signatureBowls';
@@ -156,28 +156,46 @@ const handleCustomBowlCheckout = () => {
     });
 };
 
-const addToOrder = () => {
+const addToOrder = async () => {
     let { path } = route.currentRoute.value;
-	showModal.value = true;
-    switch (path) {
-		case '/smoothies':
-			handleSmoothieCheckout();
-			break;
-			case '/signatureBowls':
-            handleSignatureBowlCheckout();
-			break;
-			case '/customBowls':
-        	handleCustomBowlCheckout();
-			break;
-			default:
-				break;
-			}
-		};
+	let promiseChoice;
+    try {
+        switch (path) {
+            case '/smoothies':
+                promiseChoice = new Promise((resolve, reject) => {
+					resolve(handleSmoothieCheckout());
+				});
+                break;
+            case '/signatureBowls':
+                promiseChoice = new Promise((resolve, reject) => {
+					resolve(handleSignatureBowlCheckout());
+				});
+                break;
+            case '/customBowls':
+				promiseChoice = new Promise((resolve, reject) => {
+					resolve(handleCustomBowlCheckout());
+				});
+                break;
+            default:
+                break;
+        }
+
+		await promiseChoice;
+
+		await Promise.resolve(
+			setTimeout(() => {
+				showModal.value = true;
+			}, 600)
+		);
+    } catch (error) {
+        console.error(error);
+        throw new Error(error);
+    }
+};
 
 const navigatePrevious = () => {
     route.go(-1);
 };
-
 </script>
 
 <template>
@@ -185,7 +203,7 @@ const navigatePrevious = () => {
         <button class="prev-button" @click.prevent="navigatePrevious">Previous</button>
         <button class="add-to-order" @click.prevent="addToOrder">Add to Order</button>
     </div>
-	<OrderAdded v-if="showModal"></OrderAdded>
+    <OrderAdded v-if="showModal"></OrderAdded>
 </template>
 
 <style scoped>
