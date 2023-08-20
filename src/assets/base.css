@@ -165,7 +165,11 @@ input[type='checkbox'] {
 }
 
 .size {
-	text-transform: none 
+	text-transform: none;
+}
+
+label.size {
+	font-size: 14px;
 }
 
 
