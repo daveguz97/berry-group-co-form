@@ -419,19 +419,6 @@ label {
     margin: 0 0.5rem;
 }
 
-button {
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 0.5rem;
-    background-color: var(--lighter-green-color);
-    margin: 0.5rem;
-    width: 150px;
-    height: 30px;
-    transition: all 0.3s ease-in-out;
-    text-align: center;
-}
-
 button:hover,
 button:hover {
     background-color: var(--light-green-color);

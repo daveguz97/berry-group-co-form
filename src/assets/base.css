@@ -70,7 +70,7 @@ label {
 }
 
 .price, .gf, .nf {
-	color: var(--light-green-color);
+	color: var(--periwinkle);
 	font-weight: 600;
 }
 
@@ -170,6 +170,27 @@ input[type='checkbox'] {
 
 label.size {
 	font-size: 14px;
+}
+
+button:not(.ingredients-button) {
+    border: none;
+	-webkit-box-shadow: 1px 2px 15px -1px var(--periwinkle);
+    -moz-box-shadow: 1px 2px 15px -1px var(--periwinkle);
+    box-shadow: 1px 1px 10px -1px var(--periwinkle);
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-color: transparent;
+    margin: 0.5rem;
+    width: 130px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+	margin: 0 .5rem;
+}
+
+button:hover {
+    transform: scale(1.1);
 }
 
 

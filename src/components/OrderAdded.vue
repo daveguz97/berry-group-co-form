@@ -62,7 +62,6 @@ const checkout = () => {
 }
 
 .modal button {
-    background-color: var(--lighter-green-color);
     border: none;
     padding: 0.5rem 1rem;
 	margin: 0 1rem;
@@ -70,9 +69,5 @@ const checkout = () => {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
-}
-
-.modal button:hover {
-    background-color: var(--light-green-color);
 }
 </style>

@@ -50,7 +50,7 @@ const handleSmoothieCheckout = () => {
         showErrorMessageForSmoothie.value = false;
     } else {
         showErrorMessageForSmoothie.value = true;
-        return showErrorMessageForSmoothie;
+        throw new Error('Please select a smoothie.');
     }
 
     allSmoothies.value.forEach((smoothie) => {
@@ -80,7 +80,7 @@ const handleSignatureBowlCheckout = () => {
     } else {
         // Set the error message to true
         showErrorMessageForBowl.value = true;
-        return showErrorMessageForBowl;
+        throw new Error('Please select a bowl.');
     }
 
     // Reset all the sizes to false
@@ -134,7 +134,7 @@ const handleCustomBowlCheckout = () => {
         showErrorMessageForCustom.value = false;
     } else {
         showErrorMessageForCustom.value = true;
-        return showErrorMessageForCustom;
+        throw new Error('Please select a bowl.');
     }
 
     customBowlStore.customBowl.forEach((bowl) => {
@@ -209,22 +209,7 @@ const navigatePrevious = () => {
 <style scoped>
 @import '../assets/base.css';
 
-button {
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 0.5rem;
-    background-color: var(--lighter-green-color);
-    margin: 0 0.5rem;
-    width: 150px;
-    height: 30px;
-    transition: all 0.3s ease-in-out;
-    text-align: center;
-}
 
-button:hover {
-    background-color: var(--light-green-color);
-}
 
 .form-buttons {
     display: flex;
