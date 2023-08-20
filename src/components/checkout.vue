@@ -368,7 +368,7 @@ onMounted(() => {
                 <h4>Cash App Me</h4>
                 <h6>$Trinnydand</h6>
             </div>
-            <div class="form-group">
+            <div class="form-buttons">
                 <button class="submit-button" type="submit" @click.prevent="sendEmail">
                     Submit
                 </button>
@@ -407,6 +407,12 @@ ul li {
     border: 1px solid var(--lighter-green-color);
 }
 
+.form-buttons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 1rem 0;
+}
 .error-input {
     border: 1px solid red;
 }
@@ -417,11 +423,6 @@ input {
 }
 label {
     margin: 0 0.5rem;
-}
-
-button:hover,
-button:hover {
-    background-color: var(--light-green-color);
 }
 
 .total-price {
@@ -461,5 +462,17 @@ button:hover {
 
 h6 {
     margin: 0.3rem 0;
+}
+
+@media screen and (max-width: 768px) {
+
+	.form-buttons {
+		flex-direction: column;
+	}
+
+	.form-buttons button {
+		margin: .5rem 0;
+	}
+	
 }
 </style>

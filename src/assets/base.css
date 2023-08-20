@@ -182,8 +182,8 @@ button:not(.ingredients-button) {
     padding: 0.5rem;
     background-color: transparent;
     margin: 0.5rem;
-    width: 130px;
-    height: 30px;
+    width: 150px;
+    min-height: 40px;
     transition: all 0.3s ease-in-out;
     text-align: center;
 	margin: 0 .5rem;
