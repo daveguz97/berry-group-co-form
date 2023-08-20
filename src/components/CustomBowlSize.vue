@@ -35,7 +35,7 @@ onMounted(() => {
                 @click="handleClick(item)"
             >
                 <div class="content">
-                    <h4>{{ item.name }}</h4>
+                    <h4 class="size">{{ item.name }}</h4>
                 </div>
             </div>
         </div>

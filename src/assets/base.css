@@ -164,6 +164,14 @@ input[type='checkbox'] {
     margin-top: 0.5rem;
 }
 
+.size {
+	text-transform: none;
+}
+
+label.size {
+	font-size: 14px;
+}
+
 
 @media screen and (min-width: 1024px) {
 	body {

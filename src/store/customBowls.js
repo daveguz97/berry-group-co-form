@@ -10,17 +10,17 @@ export const useCustomBowls = defineStore('setCustomBowls', () => {
     const size = [
         {
             id: id(),
-            name: '12 OZ',
+            name: '12 Oz',
 			price: 10.0.toFixed(2),
         },
         {
             id: id(),
-            name: '16 OZ',
+            name: '16 Oz',
 			price: 13.0.toFixed(2),
         },
         {
             id: id(),
-            name: '24 OZ',
+            name: '24 Oz',
 			price: 16.0.toFixed(2),
         }
     ];
