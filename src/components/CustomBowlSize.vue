@@ -47,15 +47,18 @@ onMounted(() => {
     text-align: center;
 }
 .customBowlChoices .container {
-    display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	grid-gap: 1rem;
+    display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	text-align: center;
     align-items: center;
 }
 
 @media screen and (max-width: 768px) {
     .customBowlChoices .container {
-        flex-direction: column;
+        display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		grid-gap: 1rem;
     }
 }
 </style>
