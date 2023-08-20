@@ -62,7 +62,6 @@ const checkout = () => {
 }
 
 .modal button {
-    background-color: var(--lighter-green-color);
     border: none;
     padding: 0.5rem 1rem;
 	margin: 0 1rem;
