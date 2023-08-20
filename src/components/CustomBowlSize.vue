@@ -47,8 +47,9 @@ onMounted(() => {
     text-align: center;
 }
 .customBowlChoices .container {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-gap: 1rem;
     align-items: center;
 }
 
