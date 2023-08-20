@@ -126,7 +126,7 @@ input[type='checkbox'] {
 	width: 70%;
     height: 15vh;
 	margin: 1rem auto;
-    background: var(--lighter-green-color);
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -139,8 +139,15 @@ input[type='checkbox'] {
 	transition: all .3s ease-in-out;
 }
 
+.container .card h6 {
+	color: var(--dark-color)
+}
+
  .container .card:hover {
-	background-color: var(--light-green-color);
+	transform: scale(1.05);
+	-webkit-box-shadow: 1px 2px 15px -1px var(--periwinkle);
+	-moz-box-shadow: 1px 2px 15px -1px var(--periwinkle);
+	box-shadow: 1px 1px 10px -1px var(--periwinkle);
 }
 
  .container .card .content {
