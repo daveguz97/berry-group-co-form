@@ -28,47 +28,27 @@ const nonFat = (nf) => {
 					<sup class="nf" v-if="nonFat(topping.nf)">NF</sup>
                 </div>
             </div>
-        <p class="error-message" v-if="store.showErrorMessage">Please select a Topping.</p>
+        <p class="error-message" v-if="store.showErrorMessage">Please create a Custom Bowl.</p>
     </Form>
 </template>
 
 <style scoped>
 @import '../assets/base.css';
-.toppings-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-	grid-gap: 1rem;
-	justify-items: center;
-	margin-bottom: 1rem;
-}
-
 .form-group {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+input[type='checkbox'] {
+   position: absolute;
+   left: 10px;
 }
 
 .form-group input {
-	margin-right: .5rem;
-}
-.gf {
-	margin: .3rem;
-}
-.nf {
-	border-left: 2px solid var(--light-green-color);
-	padding-left: .3rem;
-}
-
-@media screen and (max-width: 768px) {
-    .toppings-container {
-        flex-direction: row;
-    }
-
-	.toppings-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-	}
+    margin-right: 0.5rem;
 }
 </style>

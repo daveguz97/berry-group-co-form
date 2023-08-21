@@ -17,7 +17,6 @@ const store = useCustomBowls();
                 <label :for="base.name">&nbsp;{{ base.name }}</label>
             </div>
         </div>
-        <p class="error-message" v-if="store.showErrorMessage">Please select a base.</p>
     </Form>
 </template>
 
@@ -26,34 +25,23 @@ const store = useCustomBowls();
     margin: 0.5rem 1rem;
 }
 
-.base-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
-    justify-items: center;
-	margin: 1rem 0;
-}
+
 
 .form-group {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+input[type='checkbox'] {
+   position: absolute;
+   left: 10px;
 }
 
 .form-group input {
     margin-right: 0.5rem;
-}
-
-@media screen and (max-width: 768px) {
-    .base-container {
-        flex-direction: row;
-    }
-
-    .base-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
 }
 </style>

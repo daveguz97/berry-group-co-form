@@ -16,41 +16,25 @@ const store = useCustomBowls();
                     <label :for="fruit.name">&nbsp;{{ fruit.name }}</label>
                 </div>
             </div>
-        <p class="error-message" v-if="store.showErrorMessage">Please select a Fruit.</p>
     </Form>
 </template>
 
 <style scoped>
-
-
-.fruits-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-	grid-gap: 1rem;
-	justify-items: center;
-	margin-bottom: 1rem;
-}
-
 .form-group {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+input[type='checkbox'] {
+   position: absolute;
+   left: 10px;
 }
 
 .form-group input {
-	margin-right: .5rem;
-}
-
-@media screen and (max-width: 768px) {
-    .fruits-container {
-        flex-direction: row;
-    }
-
-	.fruits-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-	}
+    margin-right: 0.5rem;
 }
 </style>
