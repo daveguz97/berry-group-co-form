@@ -3,11 +3,59 @@ import { onMounted } from 'vue';
 import { useSmoothieStore } from '../store/smoothie';
 import { useSignatureBowlStore } from '../store/signatureBowls';
 import { useCustomBowls } from '../store/customBowls';
+import {storeToRefs} from 'pinia';
+import { useRouter } from 'vue-router';
 import { gsap } from 'gsap';
 
 const smoothieStore = useSmoothieStore();
 const signatureBowlStore = useSignatureBowlStore();
 const customBowlStore = useCustomBowls();
+
+let {
+    showErrorMessage: showErrorMessageForSmoothie, allSmoothies
+} = storeToRefs(smoothieStore);
+
+let {
+    showErrorMessage: showErrorMessageForBowl, signatureBowls
+} = storeToRefs(signatureBowlStore);
+
+let {
+    showErrorMessage: showErrorMessageForCustom
+} = storeToRefs(customBowlStore);
+
+const route = useRouter();
+
+const navigateHome = () => {
+    showErrorMessageForBowl.value = false;
+    showErrorMessageForSmoothie.value = false;
+    showErrorMessageForCustom.value = false;
+    allSmoothies.value.forEach(smoothie => {
+        smoothie.collapsed = true;
+    })
+    signatureBowls.value.forEach(bowl => {
+        bowl.collapsed = true;
+    })
+    route.push('/');
+}
+
+const navigateCheckout = () => {
+    if (calculateState() > 0) {
+        showErrorMessageForBowl.value = false;
+        showErrorMessageForSmoothie.value = false;
+        showErrorMessageForCustom.value = false;
+        allSmoothies.value.forEach(smoothie => {
+            smoothie.collapsed = true;
+        })
+        route.push('/checkout');
+    } else {
+        showErrorMessageForBowl.value = true;
+        showErrorMessageForSmoothie.value = true;
+        showErrorMessageForCustom.value = true;
+    }
+    signatureBowls.value.forEach(bowl => {
+            bowl.collapsed = true;
+        })
+}
 
 const calculateState = () => {
 	let totalAmountOfItems = smoothieStore.selectedSmoothieState.length + signatureBowlStore.selectedSignatureBowlState.length + customBowlStore.selectedCustomBowl.length;
@@ -23,16 +71,12 @@ onMounted(() => {
 <template>
     <header>
         <div class="logo-div">
-            <router-link to="/">
-                <img class="logo" src="../assets/berry-bar-co-logo.webp" alt="Berry Bar Co. Logo" />
-            </router-link>
+                <img @click="navigateHome" class="logo" src="../assets/berry-bar-co-logo.webp" alt="Berry Bar Co. Logo" />
         </div>
-        <router-link to="/checkout">
-            <div class="store-container">
+            <div class="store-container" @click="navigateCheckout">
                 <font-awesome-icon class="store" icon="cart-plus" size="lg" />
 				<div>{{ calculateState() }}</div>
             </div>
-        </router-link>
         <div class="title"><slot></slot></div>
     </header>
 </template>
@@ -66,6 +110,7 @@ header {
 	position: absolute;
     top: 30px;
     right: 0;
+    cursor: pointer;
 }
 
 .store-container div {

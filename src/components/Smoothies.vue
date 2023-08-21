@@ -39,7 +39,10 @@ onMounted(() => {
                             </li>
                         </ul>
                     </div>
-					<FormButtons/>
+                    <div class="form-buttons-container">
+
+                        <FormButtons/>
+                    </div>
 					<p class="error-message" v-if="store.showErrorMessage">Please select a smoothie.</p>
                 </div>
             </Form>
@@ -49,9 +52,20 @@ onMounted(() => {
 
 <style scoped>
 @import '../assets/base.css';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    position: relative;
+}
 .container {
+    height: 100%;
     text-align: center;
     margin: 1rem 0;
+    position: relative;
 }
 
 .content {

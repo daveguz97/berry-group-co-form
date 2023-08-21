@@ -185,6 +185,16 @@ const addToOrder = async () => {
 		await Promise.resolve(
 			setTimeout(() => {
 				showModal.value = true;
+                showErrorMessageForBowl.value = false;
+                showErrorMessageForSmoothie.value = false;
+                showErrorMessageForCustom.value = false;
+                allSmoothies.value.forEach((smoothie) => {
+                    smoothie.collapsed = true;
+                });
+                signatureBowls.value.forEach((bowl) => {
+                    bowl.collapsed = true;
+                });
+                
 			}, 600)
 		);
     } catch (error) {
@@ -194,6 +204,17 @@ const addToOrder = async () => {
 };
 
 const navigatePrevious = () => {
+    showErrorMessageForBowl.value = false;
+    showErrorMessageForSmoothie.value = false;
+    showErrorMessageForCustom.value = false;
+
+    allSmoothies.value.forEach((smoothie) => {
+        smoothie.collapsed = true;
+    });
+
+    signatureBowls.value.forEach((bowl) => {
+        bowl.collapsed = true;
+    });
     route.go(-1);
 };
 </script>
@@ -215,5 +236,6 @@ const navigatePrevious = () => {
     display: flex;
     justify-content: center;
     margin: 1rem 0;
+    bottom: 0;
 }
 </style>

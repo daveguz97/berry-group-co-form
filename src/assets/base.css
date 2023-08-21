@@ -96,6 +96,10 @@ a {
 	text-decoration: none;
 }
 
+button {
+	color: var(--dark-color);
+}
+
 .error-message {
 	text-transform: none;
 	font-weight: 700;
@@ -186,7 +190,7 @@ button:not(.ingredients-button) {
     min-height: 40px;
     transition: all 0.3s ease-in-out;
     text-align: center;
-	margin: 0 .5rem;
+	margin: 1rem;
 }
 
 button:hover {
