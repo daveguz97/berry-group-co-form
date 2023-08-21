@@ -70,17 +70,20 @@ onMounted(() => {
 
 <template>
     <header>
-        <div class="logo-div">
-                <img @click="navigateHome" class="logo" src="../assets/berry-bar-co-logo.webp" alt="Berry Bar Co. Logo" />
-        </div>
-        <div class="disclaimer">
-            <small><sup>*</sup> Order must be submitted by 10:30 AM</small>
-            <small><sup>*</sup>Deliveries are not available on Tuesdays and Wednesdays</small>
-        </div>
-            <div class="store-container" @click="navigateCheckout">
-                <font-awesome-icon class="store" icon="cart-plus" size="lg" />
-				<div>{{ calculateState() }}</div>
-            </div>
+		<div class="wrapper">
+
+			<div class="logo-div">
+					<img @click="navigateHome" class="logo" src="../assets/berry-bar-co-logo.webp" alt="Berry Bar Co. Logo" />
+			</div>
+			<div class="disclaimer">
+				<small><sup>*</sup> Order must be submitted by 10:30 AM</small>
+				<small><sup>*</sup>Deliveries are not available on Tuesdays and Wednesdays</small>
+			</div>
+				<div class="store-container" @click="navigateCheckout">
+					<font-awesome-icon class="store" icon="cart-plus" size="lg" />
+					<div>{{ calculateState() }}</div>
+				</div>
+		</div>
         <div class="title"><slot></slot></div>
     </header>
 </template>
@@ -99,6 +102,11 @@ header {
 	top: 0;
 	text-align: center;
 }
+.wrapper {
+	display: flex;
+	align-items: center;
+	margin: 1rem 0;
+}
 .disclaimer {
     display: flex;
     flex-direction: column;
@@ -106,35 +114,26 @@ header {
     justify-content: flex-start;
     text-transform: none;
     font-weight: 600;
-    margin: 0 auto;
+    margin: 0 .5rem;
     justify-content: space-around;
     position: relative;
     top: 0;
-	font-size: .8rem;
+	font-size: .7rem;
 }
 
 .title {
 	font-size: 1.2rem;
 }
 .logo-div {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	position: relative;
-	top: 0;
 	margin: .5rem 0;
 	align-self: flex-start;
 }
 .logo {
-    max-width: 90px;
+    max-width: 50px;
 }
 
 .store-container {
-	position: absolute;
-    top: 30px;
-    right: 0;
-    cursor: pointer;
+	position: relative;
 }
 
 .store-container div {

@@ -21,25 +21,25 @@ let bowlPrices = {
 const changeHeader = () => {
     switch (path.value) {
         case '/smoothies':
-            headerTitle.value = `Smoothies - 16 Oz`
+            headerTitle.value = `SMOOTHIES - 16 Oz`
             break
         case '/signatureBowls':
-            headerTitle.value = `Signature Bowls`
+            headerTitle.value = `SIGNATURE BOWLS`
             break
 		case '/customBowlSize':
-			headerTitle.value = 'Choose your Size'
+			headerTitle.value = 'CHOOSE YOUR SIZE'
 			break
         case '/customBowls':
-            headerTitle.value = 'Build your bowl'
+            headerTitle.value = 'BUILD YOUR OWN BOWL'
             break
         case '/checkout':
-            headerTitle.value = 'Checkout'
+            headerTitle.value = 'CHECKOUT'
             break
         case '/success':
 			headerTitle.value = ''
 			break
         default:
-            headerTitle.value = 'Pick your Options'
+            headerTitle.value = 'PICK YOUR OPTIONS'
     }
 }
 
@@ -68,6 +68,7 @@ onMounted(() => {
 <style scoped>
 h4 {
     text-align: center;
+	text-transform: none;
 }
 .wrapper {
 	display: flex;
