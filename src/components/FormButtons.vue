@@ -238,4 +238,11 @@ const navigatePrevious = () => {
     margin: 1rem 0;
     bottom: 0;
 }
+
+@media screen and (max-width: 768px) {
+	.form-buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+}
 </style>

@@ -34,6 +34,7 @@ const store = useCustomBowls();
     align-items: center;
     justify-content: center;
     position: relative;
+	margin: .5rem;
 }
 
 input[type='checkbox'] {

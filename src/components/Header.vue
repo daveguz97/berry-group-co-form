@@ -97,6 +97,7 @@ header {
     justify-content: space-around;
     position: relative;
 	top: 0;
+	text-align: center;
 }
 .disclaimer {
     display: flex;
@@ -109,17 +110,24 @@ header {
     justify-content: space-around;
     position: relative;
     top: 0;
+	font-size: .8rem;
 }
 
 .title {
 	font-size: 1.2rem;
 }
 .logo-div {
-	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	top: 0;
 	margin: .5rem 0;
+	align-self: flex-start;
 }
 .logo {
-    max-width: 100px;
+    max-width: 90px;
 }
 
 .store-container {
