@@ -51,7 +51,7 @@ const nonFat = (nf) => {
     width: 100%;
     display: flex;
     align-items: center;
-	margin: 0 auto;
+	margin: .3rem auto;
 }
 input[type='checkbox'] {
     margin-right: 0.5rem;

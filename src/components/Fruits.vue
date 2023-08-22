@@ -40,7 +40,7 @@ const store = useCustomBowls();
     width: 100%;
     display: flex;
     align-items: center;
-	margin: 0 auto;
+	margin: .3rem auto;
 }
 
 .form-group label {
