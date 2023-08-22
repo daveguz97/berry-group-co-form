@@ -105,20 +105,6 @@ header {
 	justify-content: space-between;
 	margin: 1rem;
 }
-/* .disclaimer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-transform: none;
-    font-weight: 600;
-    margin: 0 .5rem;
-    justify-content: space-around;
-    position: relative;
-    top: 0;
-	font-size: .7rem;
-} */
-
 .title {
 	font-size: 1.2rem;
 }

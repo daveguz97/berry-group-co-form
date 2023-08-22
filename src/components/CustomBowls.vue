@@ -77,4 +77,5 @@ onMounted(() => {
 .organic-info {
     color: var(--dark-green-color);
 }
+
 </style>

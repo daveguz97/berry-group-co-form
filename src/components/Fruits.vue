@@ -21,13 +21,14 @@ const store = useCustomBowls();
 
 <style scoped>
 .form-group {
-    width: 100%;
+    width: 90vw;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     position: relative;
-	margin: .5rem;
+	margin: .5rem auto;
+	text-align: center;
 }
 
 input[type='checkbox'] {
@@ -37,5 +38,22 @@ input[type='checkbox'] {
 
 .form-group input {
     margin-right: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+	.form-group {
+		width: 100%;
+	}
+	
+	.fruits-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+	
+	.form-group {
+		width: 30%;
+	}
 }
 </style>
