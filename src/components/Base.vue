@@ -49,7 +49,7 @@ const store = useCustomBowls();
 
 
 .form-group label {
-	margin: 0 1rem;
+	margin: 0 .5rem;
 }
 
 input[type='checkbox'] {
