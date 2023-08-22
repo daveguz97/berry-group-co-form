@@ -56,7 +56,7 @@ input[type='checkbox'] {
 }
 
 .form-group label {
-	margin: 0 1rem;
+	margin-left: .5rem;
 }
 
 @media screen and (min-width: 768px) {
