@@ -35,13 +35,13 @@ const store = useCustomBowls();
 	justify-content: center;
 }
 .form-group {
-    width: 80%;
+    width: 90%;
     display: flex;
     align-items: center;
 }
 
-.form-group input {
-    margin-right: 0.5rem;
+.form-group label {
+	margin: 0 1rem;
 }
 
 input[type='checkbox'] {

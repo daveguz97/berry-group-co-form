@@ -63,44 +63,39 @@ onMounted(() => {
 @import '../assets/base.css';
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    text-align: center;
-    position: relative;
+	width: 100%;
+    margin-top: 1rem;
 }
 .container {
     height: 100%;
-    text-align: center;
     margin: 1rem 0;
     position: relative;
 }
 
 .content {
-    margin: 0.5rem 0;
+    margin: 0.5rem;
+	width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 .form-group {
-    width: 90vw;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-	margin: .5rem auto;
-	text-align: center;
+    margin: 0.5rem auto;
+}
+
+
+.form-group label {
+    margin: 0 1rem;
+    display: inline-block;
 }
 
 input[type='checkbox'] {
-   position: absolute;
-   left: 10px;
-}
-
-.form-group input {
-	margin-right: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -115,7 +110,6 @@ input[type='checkbox'] {
 		justify-content: center;
 		position: relative;
 		margin: 0.5rem auto;
-		text-align: center;
 	}
 
 	.form-group input {
