@@ -29,15 +29,18 @@ const store = useCustomBowls();
 }
 
 .fruits-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+	margin: 0 auto;
 }
 .form-group {
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
+	margin: 0 auto;
 }
 
 .form-group label {
