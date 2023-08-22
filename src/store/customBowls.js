@@ -117,7 +117,7 @@ export const useCustomBowls = defineStore('setCustomBowls', () => {
         },
         {
             id: id(),
-            name: 'Rasberry Granola',
+            name: 'Raspberry Granola',
             gf,
             nf,
             checked,
