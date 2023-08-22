@@ -82,7 +82,7 @@ h4 {
 
 h6 {
     margin: 1rem 0.5rem;
-    font-weight: 700;
+    font-weight: 600;
 }
 .wrapper h6:not(:last-child) {
     border-right: 3px var(--border-color) solid;

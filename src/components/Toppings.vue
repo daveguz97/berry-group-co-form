@@ -1,18 +1,8 @@
 <script setup>
-import { ref } from 'vue';
 import { useCustomBowls } from '../store/customBowls';
 import Form from './Form.vue';
 
 const store = useCustomBowls();
-
-const showGrains = ref(false);
-const showChiaPuddings = ref(false);
-const showNutsAndSeeds = ref(false);
-const showCoconuts = ref(false);
-const showButters = ref(false);
-const showSyrups = ref(false);
-
-const GRAINS = store.toppings.slice;
 
 const glutenFree = (gf) => {
     return gf;
@@ -42,7 +32,13 @@ const nonFat = (nf) => {
 
 <style scoped>
 @import '../assets/base.css';
-
+.heading {
+	width: 100%;
+    margin: 0.5rem auto;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
 .form-group {
     width: 90vw;
     display: flex;

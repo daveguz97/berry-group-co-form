@@ -221,7 +221,7 @@ const navigatePrevious = () => {
 
 <template>
     <div class="form-buttons">
-        <button class="prev-button" @click.prevent="navigatePrevious">Previous</button>
+        <button class="prev-button" @click.prevent="navigatePrevious">Go Back</button>
         <button class="add-to-order" @click.prevent="addToOrder">Add to Order</button>
     </div>
     <OrderAdded v-if="showModal"></OrderAdded>

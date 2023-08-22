@@ -440,7 +440,7 @@ label {
     margin: 1rem 0;
 }
 .bold-text {
-    font-weight: bold;
+    font-weight: 500;
     margin: 0 0.5rem;
 }
 

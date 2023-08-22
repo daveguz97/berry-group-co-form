@@ -41,7 +41,7 @@ onMounted(() => {
 }
 .title {
     letter-spacing: 10px;
-    font-weight: 800;
+    font-weight: 500;
 }
 
 .pricing {
@@ -57,7 +57,7 @@ onMounted(() => {
 
 .pricing ul li {
     margin: 0 0.5rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .pricing ul li:not(:last-child) {
@@ -71,7 +71,7 @@ onMounted(() => {
 .description h6 {
     letter-spacing: 3px;
     font-family: heavyFont, sans-serif;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .organic-info {

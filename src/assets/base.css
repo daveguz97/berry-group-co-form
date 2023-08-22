@@ -110,7 +110,7 @@ button {
 .ingredients-button {
     border: none;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .ingredients-button,
@@ -156,7 +156,7 @@ input[type='checkbox'] {
 
  .container .card .content {
     color: var(--dark-color);
-    font-weight: 600;
+    font-weight: 500;
     display: flex;
     flex-direction: column;
     justify-content: center;

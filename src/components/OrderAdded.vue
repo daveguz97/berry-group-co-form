@@ -22,7 +22,7 @@ const checkout = () => {
 
 				<div class="button-group">
 					<button @click="backToHome">
-						Home
+						Go Back
 					</button>
 					<button @click="checkout">
 						Checkout

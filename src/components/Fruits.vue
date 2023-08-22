@@ -20,6 +20,13 @@ const store = useCustomBowls();
 </template>
 
 <style scoped>
+.heading {
+	width: 100%;
+    margin: 0.5rem auto;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
 .form-group {
     width: 90vw;
     display: flex;

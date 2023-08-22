@@ -26,7 +26,7 @@ const content = ref([
     },
     {
         id: id++,
-        icon: ['fab', 'apple'],
+        icon: ['fas', 'seedling'],
         name: 'Custom Bowls',
         path: '/customBowlSize',
         template: CustomBowlSizeRoute
