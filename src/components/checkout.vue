@@ -240,9 +240,9 @@ const resetEverything = () => {
     sessionStorage.clear();
 };
 
-const generateError = (item) => {
+const generateError = () => {
     if (formError.value) {
-        return `Please type in your ${item}`;
+        return `Please type in your information`;
     }
     if (objectError.value) {
         console.log(objectError.value);
