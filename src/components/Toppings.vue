@@ -33,28 +33,27 @@ const nonFat = (nf) => {
 <style scoped>
 @import '../assets/base.css';
 .heading {
-	width: 100%;
-    margin: 0.5rem auto;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-}
-.form-group {
-    width: 90vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    width: 100%;
     margin: 0.5rem auto;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
-
+.toppings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.form-group {
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
 input[type='checkbox'] {
-    position: absolute;
-    left: 10px;
+    margin-right: 0.5rem;
+    align-self: flex-start;
 }
-
 .form-group input {
     margin-right: 0.5rem auto;
 }
@@ -68,10 +67,6 @@ input[type='checkbox'] {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 1rem;
-    }
-
-    input[type='checkbox'] {
-        position: static;
     }
 }
 </style>

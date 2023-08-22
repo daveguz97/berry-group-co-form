@@ -29,26 +29,27 @@ const store = useCustomBowls();
 	justify-content: center;
 }
 
+.base-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
 
 
 .form-group {
-    width: 90vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-	margin: .5rem auto;
-	text-align: center;
-}
-
-input[type='checkbox'] {
-   position: absolute;
-   left: 10px;
+	width: 80%;
+	display: flex;
+	align-items: center;
 }
 
 .form-group input {
     margin-right: 0.5rem;
+}
+
+input[type='checkbox'] {
+	margin-right: 0.5rem;
+	align-self: flex-start;
 }
 
 @media screen and (min-width: 768px) {
@@ -60,11 +61,6 @@ input[type='checkbox'] {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 1rem;
-	}
-
-	.form-group input[type='checkbox'] {
-		position: relative;
-		
 	}
 }
 	

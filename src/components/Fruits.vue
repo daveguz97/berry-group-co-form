@@ -27,24 +27,26 @@ const store = useCustomBowls();
 	display: flex;
 	justify-content: center;
 }
-.form-group {
-    width: 90vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-	margin: .5rem auto;
-	text-align: center;
-}
 
-input[type='checkbox'] {
-   position: absolute;
-   left: 10px;
+.fruits-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.form-group {
+    width: 80%;
+    display: flex;
+    align-items: center;
 }
 
 .form-group input {
     margin-right: 0.5rem;
+}
+
+input[type='checkbox'] {
+    margin-right: 0.5rem;
+    align-self: flex-start;
 }
 
 @media screen and (min-width: 768px) {
