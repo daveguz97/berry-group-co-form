@@ -67,6 +67,7 @@ h4,h5,h6 {
 label {
 	color: var(--dark-green-color);
 	font-weight: 700;
+	text-align: left;
 }
 
 .price, .gf, .nf {
