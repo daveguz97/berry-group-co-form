@@ -5,6 +5,7 @@ import {v4 as id} from 'uuid';
 let checked = false;
 let gf = true;
 let nf = true;
+let v = true;
 
 export const useCustomBowls = defineStore('setCustomBowls', () => {
     const size = [
@@ -97,13 +98,19 @@ export const useCustomBowls = defineStore('setCustomBowls', () => {
             id: id(),
             name: 'Raspberries',
             checked,
-        }
+        },
+		{
+			id: id(),
+			name: 'Pineapple',
+			checked,
+		},
     ];
 
     const toppings = [
         {
             id: id(),
             name: 'Hemp Granola',
+			v,
             gf,
             nf,
             checked,
@@ -111,13 +118,15 @@ export const useCustomBowls = defineStore('setCustomBowls', () => {
         {
             id: id(),
             name: 'Original Granola',
-            gf,
+            v,
+			gf,
             nf,
             checked,
         },
         {
             id: id(),
             name: 'Raspberry Granola',
+			v,
             gf,
             nf,
             checked,

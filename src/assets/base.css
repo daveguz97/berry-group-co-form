@@ -69,8 +69,7 @@ label {
 	font-weight: 700;
 	text-align: left;
 }
-
-.price, .gf, .nf {
+.price, .gf, .nf, .v {
 	color: var(--periwinkle);
 	font-weight: 600;
 }
@@ -101,7 +100,7 @@ button {
 	color: var(--dark-color);
 }
 
-.error-message {
+.error-message, footer {
 	text-transform: none;
 	font-weight: 700;
 	color: #ff3333;
