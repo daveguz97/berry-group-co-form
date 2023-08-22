@@ -40,15 +40,18 @@ const nonFat = (nf) => {
     justify-content: center;
 }
 .toppings-container {
+	width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+	margin: 0 auto;
 }
 .form-group {
-    width: 80%;
+    width: 100%;
     display: flex;
     align-items: center;
+	margin: 0 auto;
 }
 input[type='checkbox'] {
     margin-right: 0.5rem;
