@@ -75,10 +75,6 @@ onMounted(() => {
 			<div class="logo-div">
 					<img @click="navigateHome" class="logo" src="../assets/berry-bar-co-logo.webp" alt="Berry Bar Co. Logo" />
 			</div>
-			<div class="disclaimer">
-				<small><sup>*</sup> Order must be submitted by 10:30 AM</small>
-				<small><sup>*</sup>Deliveries are not available on Tuesdays and Wednesdays</small>
-			</div>
 				<div class="store-container" @click="navigateCheckout">
 					<font-awesome-icon class="store" icon="cart-plus" size="lg" />
 					<div>{{ calculateState() }}</div>
@@ -104,10 +100,12 @@ header {
 }
 .wrapper {
 	display: flex;
+	width: 100%;
 	align-items: center;
-	margin: 1rem 0;
+	justify-content: space-between;
+	margin: 1rem;
 }
-.disclaimer {
+/* .disclaimer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,7 +117,7 @@ header {
     position: relative;
     top: 0;
 	font-size: .7rem;
-}
+} */
 
 .title {
 	font-size: 1.2rem;
@@ -129,11 +127,12 @@ header {
 	align-self: flex-start;
 }
 .logo {
-    max-width: 50px;
+    max-width: 100px;
 }
 
 .store-container {
 	position: relative;
+	margin-right: 1rem;
 }
 
 .store-container div {

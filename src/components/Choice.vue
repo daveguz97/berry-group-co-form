@@ -34,7 +34,7 @@ const content = ref([
 ]);
 
 onMounted(() => {
-	gsap.from('.choices', { duration: 1, opacity: 0 }).duration(1);
+    gsap.from('.choices', { duration: 1, opacity: 0 }).duration(1);
 });
 </script>
 
@@ -51,26 +51,41 @@ onMounted(() => {
             </router-link>
         </div>
     </section>
+    <footer>
+        <small><sup>*</sup> Order must be submitted by 10:30 AM</small>
+        <small><sup>*</sup>Deliveries are not available on Tuesdays and Wednesdays</small>
+    </footer>
 </template>
 
 <style scoped>
+.choices .container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	position: relative;
+	bottom: 0;
+	margin: 1rem 0;
+	font-size: .8rem;
+}
+
+/* Laptop and Desktop */
+@media screen and (min-width: 1024px) {
     .choices .container {
-		width: 100%;
-		display: grid;
-		grid-template-columns: repeat(1, 1fr);
-		grid-gap: 1rem;
-		align-items: center;
-		justify-content: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
     }
-
-	/* Laptop and Desktop */
-	@media screen and (min-width: 1024px) {
-		.choices .container {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
-			text-align: center;
-		}
-	}
-
+}
 </style>
