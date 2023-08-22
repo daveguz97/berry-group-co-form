@@ -161,7 +161,7 @@ export const useSignatureBowlStore = defineStore('setSignatureBowls', () => {
             name: 'Vanilla Chia',
             base: 'Vanilla Chia Pudding',
             toppings:
-                'Original Granola, Mango, Rasberries, Chopped Coconuts, Chopped Almonds, Cacao Nibs, Option Honey or Agave'.split(
+                'Original Granola, Mango, Raspberries, Chopped Coconuts, Chopped Almonds, Cacao Nibs, Option Honey or Agave'.split(
                     ','
                 ),
             collapsed: true,
