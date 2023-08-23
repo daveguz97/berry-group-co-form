@@ -9,7 +9,7 @@ import { useRouter } from 'vue-router';
 import Form from './Form.vue';
 import emailjs from 'emailjs-com';
 const userInfoStore = useUserInfo();
-const { firstName, phoneNumber, email } = storeToRefs(userInfoStore);
+const { firstName, phoneNumber } = storeToRefs(userInfoStore);
 const smoothieStore = useSmoothieStore();
 const { selectedSmoothieState } = storeToRefs(smoothieStore);
 const { selectedSignatureBowlState } = storeToRefs(useSignatureBowlStore());
@@ -69,7 +69,6 @@ const sendEmail = async () => {
         from_name: firstName.value,
         to_name: 'Victoria',
         phoneNumber: phoneNumber.value,
-        email: email.value,
         smoothie: filterSmoothies(),
         signatureBowl: filterSignatureBowls(),
         customBowl: filterCustomBowl()
@@ -81,9 +80,6 @@ const sendEmail = async () => {
             return;
         } else if (phoneNumber.value === '') {
             formError.value = 'phone number';
-            return;
-        } else if (email.value === '') {
-            formError.value = 'email';
             return;
         } else {
             formError.value = '';
@@ -222,7 +218,6 @@ const resetEverything = () => {
     customBowlStore.selectedCustomBowl = [];
     firstName.value = '';
     phoneNumber.value = '';
-    email.value = '';
     smoothieStore.allSmoothies.forEach((smoothie) => {
         smoothie.checked = false;
     });
@@ -266,7 +261,6 @@ onMounted(() => {
 <template>
     <Form>
         <div class="container">
-            <!-- Create a form that gets the first name, last name, phone number, and email -->
             <div class="form-group">
                 <label for="firstName">Name<sup>*</sup></label>
                 <input
@@ -286,17 +280,6 @@ onMounted(() => {
                     id="phoneNumber"
                     name="phoneNumber"
                     v-model="phoneNumber"
-                    required
-                />
-            </div>
-            <div class="form-group">
-                <label for="email">Email <sup>*</sup></label>
-                <input
-                    :class="formError || objectError ? 'error-input' : 'form-input'"
-                    type="email"
-                    id="email"
-                    name="email"
-                    v-model="email"
                     required
                 />
             </div>
