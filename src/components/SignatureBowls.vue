@@ -22,7 +22,7 @@ onMounted(() => {
                 </div>
                 <div class="form-group">
                     <button class="ingredients-button" @click.prevent="store.toggleCollapse(bowl)">
-                        {{ bowl.collapsed ? '&rarr; show toppings' : '&darr; Hide toppings' }}
+                        {{ bowl.collapsed ? '&rarr; view toppings' : '&darr; Hide toppings' }}
                     </button>
                 </div>
                 <ul v-if="!bowl.collapsed">
