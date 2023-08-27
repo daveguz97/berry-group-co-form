@@ -119,6 +119,7 @@ header {
 .store-container {
 	position: relative;
 	margin-right: 1rem;
+	cursor: pointer;
 }
 
 .store-container div {
