@@ -18,7 +18,7 @@ onMounted(() => {
             <div class="bowl-container" v-for="bowl in store.signatureBowls" :key="bowl.id">
                 <div class="form-group">
                     <label :for="bowl.name">&nbsp;{{ bowl.name }}</label>
-                    <small class="base" :for="bowl.base">Base: {{ bowl.base }}</small>
+                    <small class="base" :for="bowl.base">{{ bowl.base }}&nbsp;Base</small>
                 </div>
                 <div class="form-group">
                     <button class="ingredients-button" @click.prevent="store.toggleCollapse(bowl)">
