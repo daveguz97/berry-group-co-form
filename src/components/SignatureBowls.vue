@@ -22,12 +22,12 @@ onMounted(() => {
                 </div>
                 <div class="form-group">
                     <button class="ingredients-button" @click.prevent="store.toggleCollapse(bowl)">
-                        {{ bowl.collapsed ? '&rarr; show ingredients' : '&darr; Hide Ingredients' }}
+                        {{ bowl.collapsed ? '&rarr; show toppings' : '&darr; Hide toppings' }}
                     </button>
                 </div>
                 <ul v-if="!bowl.collapsed">
-                    <li v-for="ingredient in bowl.toppings" :key="ingredient">
-                        {{ ingredient }}
+                    <li v-for="topping in bowl.toppings" :key="topping">
+                        {{ topping }}
                     </li>
                 </ul>
                 <div class="size-container form-group">
